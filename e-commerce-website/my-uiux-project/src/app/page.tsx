@@ -8,7 +8,6 @@ import FeaturedPosts from "./components/Post";
 
 export default function Home() {
   return (
-   <>
    <main>
     <Shop_Hero />
     <EditorsSection />
@@ -17,6 +16,5 @@ export default function Home() {
     <Universe />
     <FeaturedPosts />
     </main>
-   </>
   );
 }
