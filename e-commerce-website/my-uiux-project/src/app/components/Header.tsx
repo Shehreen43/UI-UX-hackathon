@@ -3,21 +3,15 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
-import {
-  LuPhone,
-  TfiEmail,
-  FaInstagram,
-  FaYoutube,
-  FaFacebook,
-  FaTwitter,
-  RiArrowDropDownLine,
-  MdOutlineAccountCircle,
-  CiSearch,
-  IoCartOutline,
-  CiHeart,
-  HiOutlineMenuAlt3,
-  HiOutlineX,
-} from "react-icons/all";
+import { HiOutlineX, HiOutlineMenuAlt3 } from "react-icons/hi";
+import { CiHeart, CiSearch } from "react-icons/ci";
+import { IoCartOutline } from "react-icons/io5";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { MdFacebook } from "react-icons/md";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { BiLogoTwitter } from "react-icons/bi";
+import { LuPhone } from "react-icons/lu";
+import { TfiEmail } from "react-icons/tfi";
 
 const montserrat = Montserrat({
   weight: ["400", "700"],
@@ -33,11 +27,21 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
+  // Navigation Links
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Shop", href: "/shop/featured" },
+    { name: "About", href: "/about" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+    { name: "Pages", href: "/pages" },
+  ];
+
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white overflow-hidden bg-transparent max-w-screen-2xl mx-auto">
       {/* Topline */}
       <div
-        className={`hidden md:flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 bg-[#252B42] text-white ${montserrat.className}`}
+        className={`hidden md:flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 bg-text2 ${montserrat.className} text-white`}
       >
         {/* Left */}
         <div className="flex items-center gap-6">
@@ -50,22 +54,15 @@ const Navbar = () => {
         </div>
 
         {/* Center */}
-        <p className="text-sm">Follow us and get a chance to win 80% off</p>
+        <p className="text-sm hidden xl:flex">Follow us and get a chance to win 80% off</p>
 
         {/* Right */}
         <div className="flex items-center gap-4">
-          <a href="#" aria-label="Instagram">
-            <FaInstagram />
-          </a>
-          <a href="#" aria-label="YouTube">
-            <FaYoutube />
-          </a>
-          <a href="#" aria-label="Facebook">
-            <FaFacebook />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <FaTwitter />
-          </a>
+          <p className="text-white">Follow Us :</p>
+          <Link href="/"><FaInstagram className="text-white hover:text-prim_blue w-5 h-5" /></Link>
+          <Link href="/"><FaYoutube className="text-white hover:text-prim_blue w-5 h-5" /></Link>
+          <Link href="/"><MdFacebook className="text-white hover:text-prim_blue w-5 h-5" /></Link>
+          <Link href="/"><BiLogoTwitter className="text-white hover:text-prim_blue w-5 h-5" /></Link>
         </div>
       </div>
 
@@ -78,34 +75,19 @@ const Navbar = () => {
 
         {/* Links */}
         <div className="hidden md:flex items-center gap-6">
-          <Link href="/" className="text-sm font-bold">
-            Home
-          </Link>
-          <Link href="/" className="text-sm font-bold flex items-center">
-            Shop <RiArrowDropDownLine />
-          </Link>
-          <Link href="/" className="text-sm font-bold">
-            About
-          </Link>
-          <Link href="/" className="text-sm font-bold">
-            Blog
-          </Link>
-          <Link href="/" className="text-sm font-bold">
-            Contact
-          </Link>
-          <Link href="/" className="text-sm font-bold">
-            Pages
-          </Link>
+          {navLinks.map((link) => (
+            <Link key={link.name} href={link.href} className="text-sm font-bold">
+              {link.name}
+            </Link>
+          ))}
         </div>
 
         {/* Icons */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 text-prim_blue">
           <button className="hidden md:flex items-center gap-2 text-sm font-bold">
             <MdOutlineAccountCircle /> Login / Register
           </button>
-          <button className="text-lg">
-            <CiSearch />
-          </button>
+          <button className="text-lg"><CiSearch /></button>
           <button className="text-lg flex items-center">
             <IoCartOutline /> 1
           </button>
@@ -126,24 +108,11 @@ const Navbar = () => {
       {menuOpen && (
         <div className="absolute top-0 left-0 w-full bg-white shadow-lg z-50 p-4">
           <div className="flex flex-col gap-4 text-center">
-            <Link href="/" className="text-gray-800 hover:text-blue-500">
-              Home
-            </Link>
-            <Link href="/" className="text-gray-800 hover:text-blue-500">
-              Shop
-            </Link>
-            <Link href="/" className="text-gray-800 hover:text-blue-500">
-              About
-            </Link>
-            <Link href="/" className="text-gray-800 hover:text-blue-500">
-              Blog
-            </Link>
-            <Link href="/" className="text-gray-800 hover:text-blue-500">
-              Contact
-            </Link>
-            <Link href="/" className="text-gray-800 hover:text-blue-500">
-              Pages
-            </Link>
+            {navLinks.map((link) => (
+              <Link key={link.name} href={link.href} className="text-gray-800 hover:text-prim_blue">
+                {link.name}
+              </Link>
+            ))}
           </div>
         </div>
       )}

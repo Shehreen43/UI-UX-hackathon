@@ -9,12 +9,14 @@ import FeaturedPosts from "./components/Post";
 export default function Home() {
   return (
    <>
+   <main>
     <Shop_Hero />
     <EditorsSection />
     <BestSeller_Pd />
     <ClassicProduct />
     <Universe />
     <FeaturedPosts />
+    </main>
    </>
   );
 }

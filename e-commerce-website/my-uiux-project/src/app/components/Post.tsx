@@ -1,77 +1,91 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { LuAlarmClockCheck } from "react-icons/lu";
+import { BsGraphUpArrow } from "react-icons/bs";
+import { FcNext } from "react-icons/fc";
+
+const posts = [
+  {
+    id: 1,
+    title: "Loudest à la Madison #1 (L'Integral)",
+    description: "We focus on ergonomics and meeting you where you work.",
+    imgUrl: "/post01.png",
+    date: "22 April 2021",
+    comments: 15,
+    tag: "New",
+  },
+  {
+    id: 2,
+    title: "Loudest à la Madison #1 (L'Integral)",
+    description: "We focus on ergonomics and meeting you where you work.",
+    imgUrl: "/post1.png",
+    date: "22 April 2021",
+    comments: 15,
+    tag: "New",
+  },
+  {
+    id: 3,
+    title: "Loudest à la Madison #1 (L'Integral)",
+    description: "We focus on ergonomics and meeting you where you work.",
+    imgUrl: "/post2.png",
+    date: "22 April 2021",
+    comments: 15,
+    tag: "New",
+  },
+  
+];
 
 const FeaturedPosts = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "Loudest à la Madison #1 (L'Integral)",
-      description: "We focus on ergonomics and meeting you where you work.",
-      img: "/post01.png",
-      date: "22 April 2021",
-      comments: 10,
-      tag: "NEW",
-    },
-    {
-      id: 2,
-      title: "Loudest à la Madison #1 (L'Integral)",
-      description: "We focus on ergonomics and meeting you where you work.",
-      img: "/post1.png",
-      date: "22 April 2021",
-      comments: 12,
-      tag: "Trending",
-    },
-    {
-      id: 3,
-      title: "Loudest à la Madison #1 (L'Integral)",
-      description: "We focus on ergonomics and meeting you where you work.",
-      img: "/post2.png",
-      date: "22 April 2021",
-      comments: 15,
-      tag: "Hot",
-    },
-  ];
-
   return (
     <section className="overflow-hidden bg-transparent max-w-screen-2xl mx-auto">
-    <div className="bg-white py-10 mt-28">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-800">Featured Posts</h2>
-        <p className="text-gray-500 mt-2">
-          Resolving conflicts in Newtonian mechanics and modern physics
-        </p>
-      </div>
+      <div className="flex flex-col my-10">
+          
+          <div className="flex flex-col my-10">
+          <h6 className="font-montserrat text-[14px] font-bold text-prim_blue leading-[24px] tracking-[0.2px] text-center">Practice Advice</h6>
+          <h2 className="font-montserrat text-[40px] font-bold leading-[50px] text-text2 tracking-[0.2px] text-center">Featured Posts</h2>
+          <p className="font-montserrat text-[14px] font-normal leading-[20px] text-text tracking-[0.2px] text-center">Problems trying to resolve the conflict between 
+          the two major realms of Classical physics: Newtonian mechanics </p>
+          </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-6">
         {posts.map((post) => (
-          <article key={post.id} className="bg-white shadow-md rounded-lg overflow-hidden transform transition-transform hover:scale-105">
+          <div key={post.id} className="border shadow-sm w-full max-w-[348px] mx-auto mb-6">
+            {/* Image Section */}
             <div className="relative">
-              <div className="w-full h-40 relative">
-                <Image src={post.img} alt={post.title} width={500} height={160} className="object-cover" />
-                <span className={`absolute top-2 left-2 text-white font-bold px-2 py-1 rounded ${post.tag === "NEW" ? "bg-green-500" : post.tag === "Trending" ? "bg-yellow-500" : "bg-red-500"}`}>
-                  {post.tag}
-                </span>
-              </div>
+            <span
+      className={`absolute top-2 left-2 bg-red text-white bg-red-500 text-sm font-bold px-2 py-1 rounded ${post.tag}`}
+            >
+       {post.tag}
+       </span>
+              <Image src={post.imgUrl} alt={post.title} width={348} height={300} className="object-cover" />
             </div>
 
-            <div className="p-3">
-              <h3 className="font-semibold text-gray-800 text-md">{post.title}</h3>
-              <p className="text-gray-600 mt-2 text-sm">{post.description}</p>
-
-              <div className="mt-4 flex justify-between text-gray-500 text-xs">
-                <span>{post.date}</span>
-                <span>{post.comments} comments</span>
+            {/* Card Details */}
+            <div className="flex flex-col border p-4">
+            <div className="flex gap-2 py-2">
+                <Link href={'/'} className="text-prim_blue font-montserrat text-[14px] font-normal leading-[20px] tracking-[0.2px]">Google</Link>
+                <Link href={'/'} className="text-text font-montserrat text-[14px] font-normal leading-[20px] tracking-[0.2px]">Trending</Link>
+                <Link href={'/'} className="text-text font-montserrat text-[14px] font-normal leading-[20px] tracking-[0.2px]">New</Link>
               </div>
-
-              <Link href="#" className="inline-block mt-4 text-blue-500 hover:underline">
-                Learn More →
+              <h4 className="font-montserrat p-y2 text-[20px] text-text2 font-bold leading-[30px] tracking-[0.2px] text-left">
+                {post.title}
+              </h4>
+              <p className="font-montserrat py-2 text-[14px] font-normal text-text leading-[20px] tracking-[0.2px] text-left">
+                {post.description}
+              </p>
+              <div className="flex justify-between mt-4 text-sm text-gray-600 p-2">
+               <div className="flex gap-2"> <span><LuAlarmClockCheck className="text-prim_blue" /></span> <span>{post.date}</span> </div>
+                <div className="flex gap-2"> <span><BsGraphUpArrow className="text-prim_green" /></span> <span>{post.comments} comments</span> </div>
+              </div>
+              <Link href={`/posts/${post.id}`} className="font-montserrat text-[14px] font-bold leading-[24px] tracking-[0.2px] text-blue-500 mt-4 flex gap-2">
+                  Learn More <span><FcNext className="mt-1 text-prim_blue" /></span>
               </Link>
             </div>
-          </article>
+          </div>
         ))}
       </div>
-    </div>
+      </div>
     </section>
   );
 };
