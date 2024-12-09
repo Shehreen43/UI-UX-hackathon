@@ -18,8 +18,6 @@ export default {
         prim_blue: '#23A6F0',
         orange: '#E77C40',
         secondary2: '#2DC071',
-        background: "var(--background)",
-        foreground: "var(--foreground)",
       },
     },
   },

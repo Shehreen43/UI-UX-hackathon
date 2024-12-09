@@ -38,7 +38,7 @@ const posts = [
 
 const FeaturedPosts = () => {
   return (
-    <section className="overflow-hidden bg-transparent max-w-screen-2xl mx-auto">
+    <section className="overflow-hidden bg-white max-w-screen-2xl mx-auto">
       <div className="flex flex-col my-10">
           
           <div className="flex flex-col my-10">

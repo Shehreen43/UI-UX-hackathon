@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Universe = () => {
   return (
-    <section className="overflow-hidden bg-transparent max-w-screen-2xl mx-auto mt-0">
+    <section className="overflow-hidden bg-white max-w-screen-2xl mx-auto mt-0">
       <div className="flex flex-col lg:flex-row items-center lg:items-start lg:text-left text-center">
         {/* Image Section */}
         <div className="hidden lg:flex  w-full lg:w-1/2">

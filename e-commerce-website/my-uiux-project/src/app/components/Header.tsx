@@ -38,7 +38,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="w-full bg-white overflow-hidden bg-transparent max-w-screen-2xl mx-auto">
+    <div className="w-full bg-white overflow-hidden max-w-screen-2xl mx-auto">
       {/* Topline */}
       <div
         className={`hidden md:flex justify-between items-center px-4 md:px-8 lg:px-16 py-2 bg-text2 ${montserrat.className} text-white`}
@@ -68,7 +68,7 @@ const Navbar = () => {
 
       {/* Navbar */}
       <div
-        className={`flex justify-between items-center px-4 md:px-8 lg:px-16 py-4 ${montserrat.className}`}
+        className={`flex text-text2 justify-between items-center px-4 md:px-8 lg:px-16 py-4 ${montserrat.className}`}
       >
         {/* Brand */}
         <h3 className="text-2xl font-bold">Bandage</h3>

@@ -6,7 +6,7 @@ import { BiLogoTwitter } from "react-icons/bi";
 
 const Footer = () => {
   return (
-    <footer className="overflow-hidden bg-transparent max-w-screen-2xl mx-auto">
+    <footer className="overflow-hidden bg-white max-w-screen-2xl mx-auto">
     <div> 
       {/* footer header */}
       <div className="flex flex-col md:flex-row justify-between items-center  px-20 bg-[#fafafa] py-10">
