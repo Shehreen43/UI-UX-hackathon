@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="flex justify-center items-center min-h-screen bg-[#1a1a2e] text-white overflow-hidden relative">
       <div className="text-center">
         <h1 className="text-[15vw] text-[#e94560] text-shadow animate-pulse">404</h1>
-        <p className="text-[1.5vw] text-[#eeeeee] mt-2 animate-fade-in hover:scale-110">Oops! The page you're looking for can't be found.</p>
+        <p className="text-[1.5vw] text-[#eeeeee] mt-2 animate-fade-in hover:scale-110">Oops! The page your looking for can not be found.</p>
         <Link href="/">
           <a className="inline-block mt-8 px-6 py-3 bg-[#e94560] text-white text-[1.2vw] rounded transition-transform duration-300 ease-in-out transform hover:bg-[#ff3e50] hover:scale-110">
             Go Back Home
