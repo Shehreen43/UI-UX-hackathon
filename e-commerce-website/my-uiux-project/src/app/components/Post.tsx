@@ -5,7 +5,7 @@ const FeaturedPosts = () => {
   const posts = [
     {
       id: 1,
-      title: "Loudest à la Madison #1 (L'Integrál)",
+      title: "Loudest à la Madison #1 (L'Integral)",
       description: "We focus on ergonomics and meeting you where you work.",
       img: "/f1.png",
       date: "22 April 2021",
@@ -14,7 +14,7 @@ const FeaturedPosts = () => {
     },
     {
       id: 2,
-      title: "Loudest à la Madison #1 (L'Integrál)",
+      title: "Loudest à la Madison #1 (L'Integral)",
       description: "We focus on ergonomics and meeting you where you work.",
       img: "/f2.png",
       date: "22 April 2021",
@@ -23,7 +23,7 @@ const FeaturedPosts = () => {
     },
     {
       id: 3,
-      title: "Loudest à la Madison #1 (L'Integrál)",
+      title: "Loudest à la Madison #1 (L'Integral)",
       description: "We focus on ergonomics and meeting you where you work.",
       img: "/f3.png",
       date: "22 April 2021",

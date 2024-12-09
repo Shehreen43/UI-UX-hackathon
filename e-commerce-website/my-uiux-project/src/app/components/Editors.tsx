@@ -19,7 +19,7 @@ const categories: (Category | CategoryGroup)[] = [
 
 const EditorsSection = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto bg-[#fafafa] pt-[7%] text-center">
+    <div className="max-w-screen-2xl mx-auto bg-[#fafafa] pt-[7%] text-center pb-20">
       <div className="mb-8">
         <h3 className="font-montserrat text-[24px] font-bold leading-[32px] tracking-[0.1px]">
           EDITOR’S PICK
@@ -39,7 +39,7 @@ const EditorsSection = () => {
                 className="relative flex flex-col items-center justify-center overflow-hidden rounded-lg gap-2"
               >
                 {category.map((item) => (
-                  <div key={item.name} className="relative w-full h-[250px] overflow-hidden">
+                  <div key={item.name} className="relative w-full h-[242px] overflow-hidden">
                     <Image
                       src={item.image}
                       alt={item.name}

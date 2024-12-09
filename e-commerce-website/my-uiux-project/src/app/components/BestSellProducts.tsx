@@ -8,15 +8,15 @@ const products = [
     description: "English Department",
     price: 16.48,
     new_price: 16.50,
-    img: "/BestSll1.png",
+    url: "/BestSell1.png",
   },
   {
     id: 2,
     title: "Creative Tools Bundle",
     description: "Design Pro",
     price: 24.99,
-   new_price: 24.99,
-    img: "/BestSll2.png",
+    new_price: 24.99,
+    url: "/BestSell2.png",
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const products = [
     description: "For Beginners",
     price: 18.75,
     new_price: 18.75,
-    img: "/BestSll3.png",
+    url: "/BestSell3.png",
   },
   {
     id: 4,
@@ -32,15 +32,15 @@ const products = [
     description: "English Department",
     price: 16.48,
     new_price: 16.50,
-    img: "/BestSll4.png",
+    url: "/BestSell4.png",
   },
   {
     id: 5,
     title: "Creative Tools Bundle",
     description: "Design Pro",
     price: 24.99,
-   new_price: 24.99,
-    img: "/BestSll5.png",
+    new_price: 24.99,
+    url: "/BestSell5.png",
   },
   {
     id: 6,
@@ -48,15 +48,15 @@ const products = [
     description: "For Beginners",
     price: 18.75,
     new_price: 18.75,
-    img: "/BestSll6.png",
+    url: "/BestSell6.png",
   },
   {
     id: 7,
     title: "Creative Tools Bundle",
     description: "Design Pro",
     price: 24.99,
-   new_price: 24.99,
-    img: "/BestSll7.png",
+    new_price: 24.99,
+    url: "/BestSell7.png",
   },
   {
     id: 8,
@@ -64,13 +64,13 @@ const products = [
     description: "For Beginners",
     price: 18.75,
     new_price: 18.75,
-    img: "/BestSll8.png",
+    url: "/BestSell8.png",
   },
 ];
 
 export const BestSeller_Pd = () => {
   return (
-    <section className="max-w-screen-2xl mx-auto">
+    <section className="max-w-screen-2xl mx-auto px-4 pt-10">
       <div>
         <h4 className="font-montserrat text-text text-[20px] font-normal leading-[30px] tracking-[0.2px] text-center">
           Featured Products
@@ -84,12 +84,12 @@ export const BestSeller_Pd = () => {
       </div>
 
       {/* Card Grid */}
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
         {products.map((product) => (
-          <div key={product.id} className="flex flex-col md:flex-col-2 lg:flex-cols-4 mt-6">
+          <div key={product.id} className="flex flex-col">
             <div className="min-w-[239px] max-h-[427px] w-full">
               <Image
-                src={product.img}
+                src={product.url}
                 alt={product.title}
                 width={239}
                 height={427}
@@ -106,10 +106,11 @@ export const BestSeller_Pd = () => {
             </p>
 
             <h5 className="font-montserrat text-[16px] font-bold leading-[24px] tracking-[0.1px] text-center text-text2 mt-2">
-              <span className="text-[#BDBDBD]">${product.price}</span> <span className="text-text2">${product.new_price}</span>
+              <span className="text-[#BDBDBD]">${product.price}</span>{" "}
+              <span className="text-text2">${product.new_price}</span>
             </h5>
 
-            <div className="flex gap-1 mt-2">
+            <div className="flex gap-1 mt-2 justify-center">
               <span className="bg-prim_blue w-[16px] h-[16px] rounded-full"></span>
               <span className="bg-prim_green w-[16px] h-[16px] rounded-full"></span>
               <span className="bg-orange w-[16px] h-[16px] rounded-full"></span>
