@@ -39,7 +39,7 @@ const posts = [
 const FeaturedPosts = () => {
   return (
     <section className="overflow-hidden bg-white max-w-screen-2xl mx-auto">
-      <div className="flex flex-col my-10">
+      <div className="flex flex-col my-10 bg-white">
           
           <div className="flex flex-col my-10">
           <h6 className="font-montserrat text-[14px] font-bold text-prim_blue leading-[24px] tracking-[0.2px] text-center">Practice Advice</h6>
