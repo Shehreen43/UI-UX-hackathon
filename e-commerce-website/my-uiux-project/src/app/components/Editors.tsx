@@ -24,7 +24,7 @@ const EditorsSection = () => {
         <h3 className="font-montserrat text-[24px] font-bold leading-[32px] tracking-[0.1px]">
           EDITOR’S PICK
         </h3>
-        <p className="font-montserrat text-[14px] font-normal leading-[20px] tracking-[0.2px]">
+        <p className="font-montserrat text-[14px] text-text font-normal leading-[20px] tracking-[0.2px]">
           Explore our hand-picked categories
         </p>
       </div>
