@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const FeaturedPosts = () => {
   const posts = [
@@ -7,7 +8,7 @@ const FeaturedPosts = () => {
       id: 1,
       title: "Loudest à la Madison #1 (L'Integral)",
       description: "We focus on ergonomics and meeting you where you work.",
-      img: "/f1.png",
+      img: "/post01.png",
       date: "22 April 2021",
       comments: 10,
       tag: "NEW",
@@ -16,7 +17,7 @@ const FeaturedPosts = () => {
       id: 2,
       title: "Loudest à la Madison #1 (L'Integral)",
       description: "We focus on ergonomics and meeting you where you work.",
-      img: "/f2.png",
+      img: "/post1.png",
       date: "22 April 2021",
       comments: 12,
       tag: "Trending",
@@ -25,7 +26,7 @@ const FeaturedPosts = () => {
       id: 3,
       title: "Loudest à la Madison #1 (L'Integral)",
       description: "We focus on ergonomics and meeting you where you work.",
-      img: "/f3.png",
+      img: "/post2.png",
       date: "22 April 2021",
       comments: 15,
       tag: "Hot",
@@ -33,6 +34,7 @@ const FeaturedPosts = () => {
   ];
 
   return (
+    <section className="overflow-hidden bg-transparent max-w-screen-2xl mx-auto">
     <div className="bg-white py-10 mt-28">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-gray-800">Featured Posts</h2>
@@ -62,14 +64,15 @@ const FeaturedPosts = () => {
                 <span>{post.comments} comments</span>
               </div>
 
-              <a href="#" className="inline-block mt-4 text-blue-500 hover:underline">
+              <Link href="#" className="inline-block mt-4 text-blue-500 hover:underline">
                 Learn More →
-              </a>
+              </Link>
             </div>
           </article>
         ))}
       </div>
     </div>
+    </section>
   );
 };
 
