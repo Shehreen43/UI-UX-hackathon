@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="overflow-hidden bg-white max-w-screen-2xl mx-auto">
     <div> 
       {/* footer header */}
-      <div className="flex flex-col md:flex-row justify-between items-center  px-20 bg-[#fafafa] py-10">
+      <div className="flex flex-col md:flex-row justify-between items-center  px-20 bg-light_Gray py-10">
         
         <h3 className="font-montserrat text-text2 text-[24px] font-bold leading-[32px] tracking-[0.1px] text-left">
         Bandage</h3>
@@ -65,7 +65,7 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="py-4 pl-4 flex-1 border bg-[#fafafa] border-gray-300 rounded-l-md focus:outline-none focus:ring focus:ring-blue-300"
+                  className="py-4 pl-4 flex-1 border bg-light_Gray border-gray-300 rounded-l-md focus:outline-none focus:ring focus:ring-blue-300"
                   aria-label="Email address"
                 />
                 <button
@@ -84,7 +84,7 @@ const Footer = () => {
 
       {/* footer footer */}
 
-      <div className="py-[25px] bg-[#fafafa] pl-20">
+      <div className="py-[25px] bg-light_Gray pl-20">
       <h6 className="font-montserrat text-[14px] text-text font-bold leading-[24px] tracking-[0.2px] text-left">Made With Love By Finland All Right Reserved </h6>
       </div>
     </div>

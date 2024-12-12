@@ -30,7 +30,7 @@ const Navbar = () => {
   // Navigation Links
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Shop", href: "/shop/featured" },
+    { name: "Shop", href: "/Shop" },
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
@@ -68,7 +68,7 @@ const Navbar = () => {
 
       {/* Navbar */}
       <div
-        className={`flex text-text2 justify-between items-center px-4 md:px-8 lg:px-16 py-4 ${montserrat.className}`}
+        className={`flex text-text2  bg-white justify-between items-center px-4 md:px-8 lg:px-16 py-4 ${montserrat.className}`}
       >
         {/* Brand */}
         <h3 className="text-2xl font-bold">Bandage</h3>
