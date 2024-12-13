@@ -7,7 +7,7 @@ const products = [
     title: "Graphic Design Essentials",
     description: "English Department",
     price: 16.48,
-    new_price: 16.50,
+    new_price: 16.5,
     url: "/BestSell1.png",
   },
   {
@@ -31,7 +31,7 @@ const products = [
     title: "Graphic Design Essentials",
     description: "English Department",
     price: 16.48,
-    new_price: 16.50,
+    new_price: 16.5,
     url: "/BestSell4.png",
   },
   {
