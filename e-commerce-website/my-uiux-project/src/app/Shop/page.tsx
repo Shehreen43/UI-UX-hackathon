@@ -88,7 +88,7 @@ const ShopProduct = () => {
               <GoChevronRight className="pt-[5px] size-5 text-muted_text_col" />
             </li>
             <li>
-              <Link href="/Shop" className="text-muted_text_col font-bold sm:items-end">Shop</Link>
+               <Link href="/Shop/ShopDetail" className="text-muted_text_col font-bold sm:items-end">Shop</Link>
             </li>
           </ul>
         </div>
