@@ -9,6 +9,7 @@ const products = [
     price: 16.48,
     new_price: 16.5,
     url: "/BestSell1.png",
+    showColors: true,
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const products = [
     price: 24.99,
     new_price: 24.99,
     url: "/BestSell2.png",
+    showColors: true,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const products = [
     price: 18.75,
     new_price: 18.75,
     url: "/BestSell3.png",
+    showColors: true,
   },
   {
     id: 4,
@@ -33,6 +36,7 @@ const products = [
     price: 16.48,
     new_price: 16.5,
     url: "/BestSell4.png",
+    showColors: true,
   },
   {
     id: 5,
@@ -41,6 +45,7 @@ const products = [
     price: 24.99,
     new_price: 24.99,
     url: "/BestSell5.png",
+    showColors: true,
   },
   {
     id: 6,
@@ -49,6 +54,7 @@ const products = [
     price: 18.75,
     new_price: 18.75,
     url: "/BestSell6.png",
+    showColors: true,
   },
   {
     id: 7,
@@ -57,6 +63,7 @@ const products = [
     price: 24.99,
     new_price: 24.99,
     url: "/BestSell7.png",
+    showColors: true,
   },
   {
     id: 8,
@@ -65,6 +72,7 @@ const products = [
     price: 18.75,
     new_price: 18.75,
     url: "/BestSell8.png",
+    showColors: true,
   },
 ];
 
@@ -110,12 +118,14 @@ export const BestSeller_Pd = () => {
               <span className="text-text2">${product.new_price}</span>
             </h5>
 
-            <div className="flex gap-1 mt-2 justify-center">
-              <span className="bg-prim_blue w-[16px] h-[16px] rounded-full"></span>
-              <span className="bg-prim_green w-[16px] h-[16px] rounded-full"></span>
-              <span className="bg-orange w-[16px] h-[16px] rounded-full"></span>
-              <span className="bg-text2 w-[16px] h-[16px] rounded-full"></span>
-            </div>
+      {product.showColors && ( // Conditionally render the color row
+         <div className="flex gap-1 mt-2 justify-center">
+          <span className="bg-prim_blue w-[16px] h-[16px] rounded-full"></span>
+          <span className="bg-prim_green w-[16px] h-[16px] rounded-full"></span>
+          <span className="bg-orange w-[16px] h-[16px] rounded-full"></span>
+          <span className="bg-text2 w-[16px] h-[16px] rounded-full"></span>
+         </div>
+           )}
           </div>
         ))}
       </div>

@@ -9,8 +9,85 @@ import { AiOutlineStar } from "react-icons/ai";
 import { HiOutlineHeart } from "react-icons/hi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { BsEyeFill } from "react-icons/bs";
+import BrandsLogo from "@/app/components/Brands";
 
 const ProductDetails = () => {
+
+  const products = [
+    {
+      id: 1,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP1.png",
+      showColors: false,
+    },
+    {
+      id: 2,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP2.png",
+      showColors: false,
+    },
+    {
+      id: 3,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP3.png",
+      showColors: false,
+    },
+    {
+      id: 4,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP4.png",
+      showColors: false,
+    },
+    {
+      id: 5,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP5.png",
+      showColors: false,
+    },
+    {
+      id: 6,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP6.png",
+      showColors: false,
+    },
+    {
+      id: 7,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP1.png",
+      showColors: false,
+    },
+    {
+      id: 8,
+      title: "Graphic Design Essentials",
+      description: "English Department",
+      price: 16.48,
+      new_price: 16.5,
+      url: "/productDetail/BP2.png",
+      showColors: false,
+    },
+   
+  ]
   return (
     <>
       {/* product detail section */}
@@ -201,14 +278,51 @@ const ProductDetails = () => {
 
         {/* product cards  */}
         <div className="w-full grid grid-cols-1  bg-light_Gray overflow-hidden max-w-screen-2xl pb-10 px-20 mx-auto mt-0 ">
+          <div>
+          <h3 className="font-montserrat text-xl pt-10 pb-5 font-bold leading-[32px] tracking-[0.1px]  text-text2">BESTSELLER PRODUCTS</h3>
+          <hr />
+           {/* Card Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+                  {products.map((product) => (
+                    <div key={product.id} className="flex flex-col bg-white">
+                      <div className="min-w-[239px] max-h-[280px] w-full">
+                        <Image
+                          src={product.url}
+                          alt={product.title}
+                          width={239}
+                          height={280}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
           
-
-
-
-
-
+                      <h5 className="font-montserrat text-[16px] font-bold leading-[24px] tracking-[0.1px] pl-5 pt-5 pb-1 text-text2 mt-2">
+                        {product.title}
+                      </h5>
+          
+                      <p className="font-montserrat text-[14px] font-bold leading-[24px] pl-5 tracking-[0.2px] text-text">
+                        {product.description}
+                      </p>
+          
+                      <h5 className="font-montserrat pl-5 text-[16px] font-bold leading-[24px] tracking-[0.1px] pb-10 text-text2 mt-2">
+                        <span className="text-[#BDBDBD]">${product.price}</span>{" "}
+                        <span className="text-prim_green">${product.new_price}</span>
+                      </h5>
+          
+                {product.showColors && ( // Conditionally render the color row
+                   <div className="flex gap-1 mt-2 justify-center">
+                    <span className="bg-prim_blue w-[16px] h-[16px] rounded-full"></span>
+                    <span className="bg-prim_green w-[16px] h-[16px] rounded-full"></span>
+                    <span className="bg-orange w-[16px] h-[16px] rounded-full"></span>
+                    <span className="bg-text2 w-[16px] h-[16px] rounded-full"></span>
+                   </div>
+                     )}
+                    </div>
+                  ))}
+                </div>
+          </div>
         </div>
-
+{/* brands logo */}
+<BrandsLogo />
     </>
   );
 };

@@ -7,6 +7,7 @@ import { CgMenuGridR } from "react-icons/cg";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { GoChevronDown } from "react-icons/go";
 import Shop_Product from '../components/Shop_Product';
+import BrandsLogo from '../components/Brands';
 
 const ShopProduct = () => {
   // Shop card items data
@@ -67,11 +68,9 @@ const ShopProduct = () => {
       height: 72,
       link: '/',
     },
-    
- 
   ];
-  
 
+  
   return (
     <main className="w-full ">
       <div className="flex flex-col bg-light_Gray w-full  overflow-hidden max-w-screen-2xl  px-20 mx-auto mt-0 ">
@@ -143,6 +142,7 @@ const ShopProduct = () => {
         </Link>
       ))};
     </div>
+    
 
     {/* Shop Product cards */}
  <div>
