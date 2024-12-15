@@ -73,7 +73,7 @@ const ShopProduct = () => {
   
   return (
     <main className="w-full ">
-      <div className="flex flex-col bg-light_Gray w-full  overflow-hidden max-w-screen-2xl  px-20 mx-auto mt-0 ">
+      <div className="flex flex-col bg-light_Gray w-full overflow-hidden max-w-screen-2xl px-20 mx-auto mt-0 ">
         {/* Links */}
         <div className="py-6 flex-col flex items-center justify-center sm:flex-row sm:justify-between">
           <h3 className="font-montserrat text-2xl py-7 sm:py-0 font-bold text-text2 leading-8 tracking-[0.1px]">
