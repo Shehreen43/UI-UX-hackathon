@@ -37,7 +37,10 @@ const AboutUs = () => {
 
         {/* Right Section */}
         <div className="w-full pt-10">
-          <AboutStyle />
+        <AboutStyle
+        imgSrc="/about/aboutUs1.png"
+        imgAlt="About Us Image 1"
+      />
         </div>
       </div>
 

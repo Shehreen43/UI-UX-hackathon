@@ -10,7 +10,7 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard: React.FC<TeamMemberCardProps> = ({ imageSrc }) => {
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center my-5">
       {/* Team Member Image */}
       <Image
         src={imageSrc}

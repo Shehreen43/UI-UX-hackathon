@@ -58,7 +58,7 @@ const BrandsLogo = () => {
   return (
    <>
     {/* brands  */}
-      <div className=" md:flex md:flex-wrap md:justify-between w-full bg-light_Gray py-[50px] overflow-hidden max-w-screen-2xl gap-x-1  px-20 mx-auto">
+      <div className=" md:flex-row  md:justify-between w-full flex flex-col  items-center justify-between bg-light_Gray py-[50px] px-20 mx-auto gap-y-10 overflow-hidden">
        
       {brandLogos.map((logo) => (
         <Link

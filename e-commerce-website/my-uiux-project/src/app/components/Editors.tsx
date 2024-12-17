@@ -19,7 +19,7 @@ const categories: (Category | CategoryGroup)[] = [
 
 const EditorsSection = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto bg-gray-200 pt-[7%] text-center pb-20">
+    <div className="max-w-screen-2xl mx-auto bg-light_Gray pt-[7%] text-center pb-20">
       <div className="mb-8">
         <h3 className="font-montserrat text-[24px] text-text2 font-bold leading-[32px] tracking-[0.1px]">
           EDITOR’S PICK

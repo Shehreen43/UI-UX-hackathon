@@ -22,7 +22,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
   textColor = 'text-text2',
 }) => {
   return (
-    <div className={`w-[327px] p-[50px_40px] gap-[35px] border-[1px] flex flex-col ${bgColor}`}>
+    <div className={`w-[327px] p-[50px_40px] gap-[35px] border-[2px] border-prim_blue md:rounded-md flex flex-col ${bgColor}`}>
       <h3 className={`font-montserrat text-[24px] font-bold leading-[32px] text-center ${textColor}`}>
         {title}
       </h3>
@@ -63,3 +63,5 @@ const PricingCard: React.FC<PricingCardProps> = ({
 };
 
 export default PricingCard;
+
+
