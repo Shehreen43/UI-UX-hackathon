@@ -7,7 +7,7 @@ import { CgMenuGridR } from "react-icons/cg";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { GoChevronDown } from "react-icons/go";
 import Shop_Product from '../components/Shop_Product';
-import BrandsLogo from '../components/Brands';
+
 
 const ShopProduct = () => {
   // Shop card items data
