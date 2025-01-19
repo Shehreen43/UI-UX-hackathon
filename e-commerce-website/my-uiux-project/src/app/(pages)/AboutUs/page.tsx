@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import AboutStyle from "../components/AboutStyle";
+import AboutStyle from "@/app/components/AboutStyle";
 import Image from "next/image";
 import { MdOutlineSlowMotionVideo } from "react-icons/md";
-import TeamMemberCard from "../components/TeemMember";
-import BrandsLogo from "../components/Brands";
+import TeamMemberCard from "@/app/components/TeemMember";
+import BrandsLogo from "@/app/components/Brands";
+
 
 const AboutUs = () => {
   return (

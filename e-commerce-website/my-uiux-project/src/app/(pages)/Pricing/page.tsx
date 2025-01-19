@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { GoChevronRight } from "react-icons/go";
 import { LiaAngleRightSolid } from "react-icons/lia";
-import PricingCard from "../components/PricingCard";
-import BrandsLogo from "../components/Brands";
-import FreeTrial from "../components/FreeTrial";
+import PricingCard from "../../components/PricingCard";
+import BrandsLogo from "../../components/Brands";
+import FreeTrial from "../../components/FreeTrial";
 
 
 const Pricing = () => {

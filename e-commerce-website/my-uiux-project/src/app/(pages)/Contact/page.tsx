@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import { BiPhone } from "react-icons/bi";
-import AboutStyle from "../components/AboutStyle";
+import AboutStyle from "../../components/AboutStyle";
 import { MdFacebook } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa6";
 import { BiLogoTwitter } from "react-icons/bi";
-import RequestCard from "../components/RequestCard";
+import RequestCard from "../../components/RequestCard";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsFillEnvelopeFill } from "react-icons/bs";
 import { PiArrowBendRightDown } from "react-icons/pi";

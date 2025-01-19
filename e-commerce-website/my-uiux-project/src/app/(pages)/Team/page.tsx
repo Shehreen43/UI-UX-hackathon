@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { GoChevronRight } from "react-icons/go";
-import TeamMemberCard from "../components/TeemMember";
-import FreeTrial from "../components/FreeTrial";
+import TeamMemberCard from "../../components/TeemMember";
+import FreeTrial from "../../components/FreeTrial";
 
 const TeamMembers = () => {
   return (
