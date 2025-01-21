@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import useBasketStore from "../../../../store/store";
 import AddToBasketButton from "@/components/AddToBasketButton";
+import { createCheckoutSession, Metadata } from "../../../../actions/createCheckoutSession";
 
 const BasketPage = () => {
   const groupItems = useBasketStore((state) => state.getGroupedItems());

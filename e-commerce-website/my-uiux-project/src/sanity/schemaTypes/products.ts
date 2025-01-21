@@ -1,4 +1,4 @@
-import { Role, Rule } from '@sanity/types';
+import { Rule } from '@sanity/types';
 
 export default {
   name: 'product',
