@@ -1,10 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import useBasketStore from "@/store/store";
+
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
+import useBasketStore from "../../../../store/store";
 
 
 const SuccessPage = () => {

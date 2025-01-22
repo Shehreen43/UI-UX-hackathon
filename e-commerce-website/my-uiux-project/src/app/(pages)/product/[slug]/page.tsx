@@ -1,4 +1,3 @@
-// import AddToBasketButton from '@/components/AddToBasketButton';
 import AddToBasketButton from '@/components/AddToBasketButton';
 import { imageUrl } from '@/lib/imageUrl';
 import { getAllProductsBySlug } from '@/sanity/lib/product/getAllProductsBySlug';

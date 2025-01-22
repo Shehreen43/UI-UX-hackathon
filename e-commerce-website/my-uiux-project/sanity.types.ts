@@ -146,14 +146,7 @@ export type Product = {
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  slug?: Slug;
+  tags?: Array<string>;
   sizes?: Array<string>;
   image?: {
     asset?: {
@@ -166,9 +159,6 @@ export type Product = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  stock?: number;
-  isAvailable?: boolean;
-  url?: string;
 };
 
 export type Category = {
@@ -278,6 +268,59 @@ export type SanityImageMetadata = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Sale | Order | Categories | Product | Category | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./src/sanity/lib/orders/getMyOrders.tsx
+// Variable: MY_ORDERS_QUERY
+// Query: *[_type == "order" && clerkUserId == $userId] | order(orderDate desc){            ...,            products[]{                ...,                product->            }        }
+export type MY_ORDERS_QUERYResult = Array<{
+  _id: string;
+  _type: "order";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  orderNumber?: string;
+  stripeCheckoutSessionId?: string;
+  stripeCustomerId?: string;
+  customerName?: string;
+  email?: string;
+  stripePaymentIntentId?: string;
+  products: Array<{
+    product: {
+      _id: string;
+      _type: "product";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      name?: string;
+      description?: string;
+      price?: number;
+      discountPercentage?: number;
+      priceWithoutDiscount?: number;
+      rating?: number;
+      ratingCount?: number;
+      tags?: Array<string>;
+      sizes?: Array<string>;
+      image?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      };
+    } | null;
+    quantity?: number;
+    _key: string;
+  }> | null;
+  totalPrice?: number;
+  currency?: string;
+  amountDiscount?: number;
+  status?: "cancelled" | "delivered" | "paid" | "pending" | "shipped";
+  orderDate?: string;
+}>;
+
 // Source: ./src/sanity/lib/product/getAllCategories.ts
 // Variable: ALL_CATEGORIES_QUERY
 // Query: *[_type == "category"] | order(name asc)
@@ -308,14 +351,7 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  slug?: Slug;
+  tags?: Array<string>;
   sizes?: Array<string>;
   image?: {
     asset?: {
@@ -328,9 +364,6 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   };
-  stock?: number;
-  isAvailable?: boolean;
-  url?: string;
 }>;
 
 // Source: ./src/sanity/lib/product/getAllProductsBySlug.ts
@@ -349,14 +382,7 @@ export type PRODUCT_BY_TO_QUERYResult = {
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  slug?: Slug;
+  tags?: Array<string>;
   sizes?: Array<string>;
   image?: {
     asset?: {
@@ -369,9 +395,6 @@ export type PRODUCT_BY_TO_QUERYResult = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  stock?: number;
-  isAvailable?: boolean;
-  url?: string;
 } | null;
 
 // Source: ./src/sanity/lib/product/getProductByCategory.tsx
@@ -390,14 +413,7 @@ export type PRODUCT_BY_CATEGORY_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  slug?: Slug;
+  tags?: Array<string>;
   sizes?: Array<string>;
   image?: {
     asset?: {
@@ -410,9 +426,6 @@ export type PRODUCT_BY_CATEGORY_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   };
-  stock?: number;
-  isAvailable?: boolean;
-  url?: string;
 }>;
 
 // Source: ./src/sanity/lib/product/searchProductByName.ts
@@ -431,14 +444,7 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  slug?: Slug;
+  tags?: Array<string>;
   sizes?: Array<string>;
   image?: {
     asset?: {
@@ -451,9 +457,6 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   };
-  stock?: number;
-  isAvailable?: boolean;
-  url?: string;
 }>;
 
 // Source: ./src/sanity/lib/sales/getActiveSaleByCouponCode.ts
@@ -478,6 +481,7 @@ export type ACTIVE_SALE_BY_COUPON_QUERYResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
+    "\n        *[_type == \"order\" && clerkUserId == $userId] | order(orderDate desc){\n            ...,\n            products[]{\n                ...,\n                product->\n            }\n        }\n        ": MY_ORDERS_QUERYResult;
     "*[_type == \"category\"] | order(name asc) ": ALL_CATEGORIES_QUERYResult;
     "*[_type == \"product\"] | order(name asc)": ALL_PRODUCTS_QUERYResult;
     "*[_type == \"product\" && slug.current == $slug] | order(name asc)[0]": PRODUCT_BY_TO_QUERYResult;

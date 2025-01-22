@@ -42,7 +42,7 @@ const AddToBasketButton = ({ product, disabled }: AddToBasketButtonProps) => {
       {!isStockExceeded && stockRemaining > 0 && stockRemaining <= 3 && (
         <div className="w-full mb-2">
           <p className="text-sm text-yellow-500 font-medium text-center">
-            Hurry! Only {stockRemaining} left in stock.
+            Only {stockRemaining} left in stock.
           </p>
         </div>
       )}

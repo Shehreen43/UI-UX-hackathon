@@ -1,7 +1,8 @@
 'use client';
 import {AnimatePresence, motion} from "framer-motion"
-import { Product } from "../../sanity.types";
+
 import ProductThumb from "./ProductThumb";
+import { Product } from "../../sanity.types";
 
 
 const ProductGrid = ({products}: {products:Product[]}) => {

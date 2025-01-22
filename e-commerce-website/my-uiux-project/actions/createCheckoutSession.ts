@@ -2,9 +2,10 @@
 
 import { imageUrl } from "@/lib/imageUrl";
 import stripe from "@/lib/stripe"; 
-import { BasketItem } from "@/store/store";
+
 import * as z from "zod";
 import Stripe from "stripe"; 
+import { BasketItem } from "../store/store";
 
 // // Load environment variables from .env.local
 // const __filename = fileURLToPath(import.meta.url)
