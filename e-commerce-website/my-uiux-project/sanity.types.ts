@@ -146,9 +146,16 @@ export type Product = {
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  tags?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  slug?: Slug;
   sizes?: Array<string>;
-  image?: {
+  image?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
@@ -157,8 +164,13 @@ export type Product = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
-  };
+    _key: string;
+  }>;
+  stock?: number;
+  isAvailable?: boolean;
+  url?: string;
 };
 
 export type Category = {
@@ -297,9 +309,16 @@ export type MY_ORDERS_QUERYResult = Array<{
       priceWithoutDiscount?: number;
       rating?: number;
       ratingCount?: number;
-      tags?: Array<string>;
+      tags?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "category";
+      }>;
+      slug?: Slug;
       sizes?: Array<string>;
-      image?: {
+      image?: Array<{
         asset?: {
           _ref: string;
           _type: "reference";
@@ -308,8 +327,13 @@ export type MY_ORDERS_QUERYResult = Array<{
         };
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
         _type: "image";
-      };
+        _key: string;
+      }>;
+      stock?: number;
+      isAvailable?: boolean;
+      url?: string;
     } | null;
     quantity?: number;
     _key: string;
@@ -351,9 +375,16 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  tags?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  slug?: Slug;
   sizes?: Array<string>;
-  image?: {
+  image?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
@@ -362,8 +393,13 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
-  };
+    _key: string;
+  }>;
+  stock?: number;
+  isAvailable?: boolean;
+  url?: string;
 }>;
 
 // Source: ./src/sanity/lib/product/getAllProductsBySlug.ts
@@ -382,9 +418,16 @@ export type PRODUCT_BY_TO_QUERYResult = {
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  tags?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  slug?: Slug;
   sizes?: Array<string>;
-  image?: {
+  image?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
@@ -393,8 +436,13 @@ export type PRODUCT_BY_TO_QUERYResult = {
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
-  };
+    _key: string;
+  }>;
+  stock?: number;
+  isAvailable?: boolean;
+  url?: string;
 } | null;
 
 // Source: ./src/sanity/lib/product/getProductByCategory.tsx
@@ -413,9 +461,16 @@ export type PRODUCT_BY_CATEGORY_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  tags?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  slug?: Slug;
   sizes?: Array<string>;
-  image?: {
+  image?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
@@ -424,8 +479,13 @@ export type PRODUCT_BY_CATEGORY_QUERYResult = Array<{
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
-  };
+    _key: string;
+  }>;
+  stock?: number;
+  isAvailable?: boolean;
+  url?: string;
 }>;
 
 // Source: ./src/sanity/lib/product/searchProductByName.ts
@@ -444,9 +504,16 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  tags?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  slug?: Slug;
   sizes?: Array<string>;
-  image?: {
+  image?: Array<{
     asset?: {
       _ref: string;
       _type: "reference";
@@ -455,8 +522,13 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
     };
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
     _type: "image";
-  };
+    _key: string;
+  }>;
+  stock?: number;
+  isAvailable?: boolean;
+  url?: string;
 }>;
 
 // Source: ./src/sanity/lib/sales/getActiveSaleByCouponCode.ts

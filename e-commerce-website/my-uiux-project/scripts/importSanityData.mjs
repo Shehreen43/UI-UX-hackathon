@@ -31,18 +31,26 @@ async function uploadImageToSanity(imageUrl) {
     return null
   }
 }
+
 async function importData() {
   try {
-    console.log('Fetching products from API...')
-    const response = await axios.get('https://fakestoreapi.com/products')
-    const products = response.data
-    console.log(`Fetched ${products.length} products`)
-    for (const product of products) {
-      console.log(`Processing product: ${product.title}`)
-      let imageRef = null
-      if (product.image) {
-        imageRef = await uploadImageToSanity(product.image)
-      }
+    console.log('Fetching products from API...');
+    const response = await axios.get('https://fakestoreapi.com/products');
+    const products = response.data;
+
+    console.log(`Fetched ${products.length} products`);
+
+    // Use Promise.all to upload images in parallel
+    const imageUploadPromises = products.map((product) =>
+      product.image ? uploadImageToSanity(product.image) : null
+    );
+    const imageRefs = await Promise.all(imageUploadPromises);
+
+    // Map products with their respective image references
+    for (let i = 0; i < products.length; i++) {
+      const product = products[i];
+      const imageRef = imageRefs[i];
+
       const sanityProduct = {
         _type: 'product',
         name: product.title,
@@ -54,21 +62,25 @@ async function importData() {
         ratingCount: product.rating?.count || 0,
         tags: product.category ? [product.category] : [],
         sizes: [],
-        image: imageRef ? {
-          _type: 'image',
-          asset: {
-            _type: 'reference',
-            _ref: imageRef,
-          },
-        } : undefined,
-      }
-      console.log('Uploading product to Sanity:', sanityProduct.name)
-      const result = await client.create(sanityProduct)
-      console.log(`Product uploaded successfully: ${result._id}`)
+        image: imageRef
+          ? {
+              _type: 'image',
+              asset: {
+                _type: 'reference',
+                _ref: imageRef,
+              },
+            }
+          : undefined,
+      };
+
+      console.log('Uploading product to Sanity:', sanityProduct.name);
+      const result = await client.create(sanityProduct);
+      console.log(`Product uploaded successfully: ${result._id}`);
     }
-    console.log('Data import completed successfully!')
+
+    console.log('Data import completed successfully!');
   } catch (error) {
-    console.error('Error importing data:', error)
+    console.error('Error importing data:', error);
   }
 }
 importData()

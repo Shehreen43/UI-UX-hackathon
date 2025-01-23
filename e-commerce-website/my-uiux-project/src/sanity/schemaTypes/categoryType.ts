@@ -1,5 +1,5 @@
-import {TagIcon} from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
+import { TagIcon } from '@sanity/icons';
+import { defineField, defineType } from 'sanity';
 
 export const categoryType = defineType({
   name: 'category',
@@ -10,6 +10,7 @@ export const categoryType = defineType({
     defineField({
       name: 'title',
       type: 'string',
+      validation: (Rule) => Rule.required().min(3).max(100).warning('Category title should be between 3 and 100 characters'),
     }),
     defineField({
       name: 'slug',
@@ -17,16 +18,24 @@ export const categoryType = defineType({
       options: {
         source: 'title',
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'description',
       type: 'text',
     }),
+    defineField({
+      name: 'products',  // New field to reference products
+      title: 'Products',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'product' }] }],
+      description: 'Products belonging to this category',
+    }),
   ],
   preview: {
     select: {
-      title: "title",
-      subtitle: "description",
+      title: 'title',
+      subtitle: 'description',
     },
   },
 });

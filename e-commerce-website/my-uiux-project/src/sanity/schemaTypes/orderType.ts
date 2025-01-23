@@ -11,7 +11,7 @@ export const orderType = defineType({
       name: "orderNumber",
       title: "Order Number",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Order number is required'),
     }),
     defineField({
       name: "stripeCheckoutSessionId",
@@ -22,25 +22,25 @@ export const orderType = defineType({
       name: "stripeCustomerId",
       title: "Stripe Customer ID",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Stripe Customer ID is required'),
     }),
     defineField({
       name: "customerName",
       title: "Customer Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Customer name is required'),
     }),
     defineField({
       name: "email",
       title: "Customer Email",
       type: "string",
-      validation: (Rule) => Rule.required().email(),
+      validation: (Rule) => Rule.required().email().error('Valid email is required'),
     }),
     defineField({
       name: "stripePaymentIntentId",
       title: "Stripe Payment Intent ID",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Stripe Payment Intent ID is required'),
     }),
     defineField({
       name: "products",
@@ -55,13 +55,13 @@ export const orderType = defineType({
               title: "Product Bought",
               type: "reference",
               to: [{ type: "product" }],
-              validation: (Rule) => Rule.required(),
+              validation: (Rule) => Rule.required().error('Product reference is required'),
             }),
             defineField({
               name: "quantity",
               title: "Quantity Purchased",
               type: "number",
-              validation: (Rule) => Rule.required().min(1),
+              validation: (Rule) => Rule.required().min(1).error('Quantity must be at least 1'),
             }),
           ],
           preview: {
@@ -87,19 +87,19 @@ export const orderType = defineType({
       name: "totalPrice",
       title: "Total Price",
       type: "number",
-      validation: (Rule) => Rule.required().min(0),
+      validation: (Rule) => Rule.required().min(0).error('Total price is required and must be a positive number'),
     }),
     defineField({
       name: "currency",
       title: "Currency",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Currency is required'),
     }),
     defineField({
       name: "amountDiscount",
       title: "Amount Discount",
       type: "number",
-      validation: (Rule) => Rule.min(0),
+      validation: (Rule) => Rule.min(0).error('Discount must be a positive value'),
     }),
     defineField({
       name: "status",
@@ -120,7 +120,7 @@ export const orderType = defineType({
       name: "orderDate",
       title: "Order Date",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.required().error('Order date is required'),
     }),
   ],
   preview: {
@@ -132,13 +132,12 @@ export const orderType = defineType({
       email: "email",
     },
     prepare(select) {
-
-        const orderIdSnippet = `${select.orderId.slice(0,5)}...${select.orderId.slice(-5)} `
-        return {
-            title: `${select.customerName} (${orderIdSnippet})`,
-            subtitle: `${select.totalPrice} ${select.currency}, ${select.email}`,
-            media: BasketIcon,
-          };
+      const orderIdSnippet = `${select.orderId.slice(0, 5)}...${select.orderId.slice(-5)}`;
+      return {
+        title: `${select.customerName} (${orderIdSnippet})`,
+        subtitle: `${select.totalPrice} ${select.currency}, ${select.email}`,
+        media: BasketIcon,
+      };
     },
   },
 });
