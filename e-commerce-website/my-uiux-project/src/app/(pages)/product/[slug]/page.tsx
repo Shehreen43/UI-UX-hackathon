@@ -35,7 +35,7 @@ async function ProductPage ({params,}: {params:Promise<{slug: string;}>}) {
              )}
           </div>
           <div className='flex flex-col justify-between'>
-             <div>
+             {/* <div>
                <h1 className='text-3xl font-bold mb-4'>{product.name}</h1>
                
                <div className='text-xl font-bold mb-4'>
@@ -48,7 +48,7 @@ async function ProductPage ({params,}: {params:Promise<{slug: string;}>}) {
                <div className='prose max-w-none mb-6'>
                   {Array.isArray(product.description) && (<PortableText  value={product.description}/>)}
                </div>
-             </div>
+             </div> */}
 
              <div className='mt-6'>
                <AddToBasketButton product={product} disabled={isOutOfStock}/>

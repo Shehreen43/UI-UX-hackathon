@@ -27,20 +27,21 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
 });
+
 interface MobileMenuProps {
-  links: { name: string; href: string }[]; // Array of objects with name and href
-  onClose: () => void; // Function that returns void
+  links: { name: string; href: string }[];
+  onClose: () => void;
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ links, onClose }) => (
-  <div className="absolute top-0 left-0 w-full bg-white shadow-lg z-150 p-4">
-    <div className="flex flex-col gap-4 text-center">
-      {links.map((link: { name: string; href: string }) => (
+  <div className="fixed top-0 left-0 w-full h-screen bg-white shadow-lg z-50 p-6">
+    <div className="flex flex-col gap-6 text-center">
+      {links.map((link) => (
         <Link
           key={link.name}
           href={link.href}
-          className="text-gray-800 hover:text-prim_blue"
-          onClick={onClose} // Calls the onClose function
+          className="text-gray-800 text-lg font-medium hover:text-blue-500"
+          onClick={onClose}
         >
           {link.name}
         </Link>
@@ -50,8 +51,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links, onClose }) => (
 );
 
 const Navbar = () => {
-  const { user } = useUser();
 
+  const { user } = useUser();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const itemCount = useBasketStore((state) =>
+    state.items.reduce((total, item) => total + item.quantity, 0)
+  );
   const createClerkPasskey = async () => {
     if (!user) return;
 
@@ -69,17 +74,10 @@ const Navbar = () => {
       }
     }
   };
-
-  const itemCount = useBasketStore((state) =>
-    state.items.reduce((total, item) => total + item.quantity, 0)
-  );
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/Shop" },
-    { name: "About Us", href: "/AboutUs" },
+    { name: "About", href: "/AboutUs" },
     { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/Contact" },
     { name: "Pricing", href: "/Pricing" },
@@ -108,15 +106,20 @@ const Navbar = () => {
 
       {/* Navbar */}
       <div className="flex justify-between items-center px-4 md:px-8 lg:px-16 py-3">
-        {/* Brand */}
-        <Link href="/" className="text-2xl font-bold text-gray-800">
+       <div className="w-1/4 ">
+       <Link href="/" className="text-2xl font-bold text-gray-800">
           Bandage
         </Link>
+       </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex gap-6">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="text-gray-800 hover:text-blue-500">
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-gray-800 hover:text-blue-500"
+            >
               {link.name}
             </Link>
           ))}
@@ -132,24 +135,26 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {menuOpen && <MobileMenu links={navLinks} onClose={() => setMenuOpen(false)} />}
-      </div>
+      {/* </div> */}
+     {/*  */}
+     <div className="md:block lg:flex w-1/2  hidden md:w-full md:justify-center md:items-center gap-4 text-prim_blue">
+          <div className="w-full">
+            {/* Search Bar */}
+            <Form
+              action="/search"
+              className="w-full sm:w-auto sm:flex-1 sm:mx-4 mt-2 sm:mt-0"
+            >
+              <input
+                type="text"
+                name="query"
+                aria-label="Search products"
+                placeholder="Search for products"
+                className="bg-gray-100 text-gray-800 px-4 py-2 rounded focus:outline-none focus:ring-blue-500/50 border w-full max-w-4xl"
+              />
+            </Form>
+          </div>
 
-      {/* Search and Actions */}
-      <div className="flex flex-wrap justify-between items-center px-4 md:px-8 lg:px-16 py-3 gap-4">
-       <Form
-  action="/search"
-  className="w-full sm:w-auto sm:flex-1 sm:mx-4 mt-2 sm:mt-0"
->
-  <input
-    type="text"
-    name="query"
-    aria-label="Search products"
-    placeholder="Search for products"
-    className="bg-gray-100 text-gray-800 px-4 py-2 rounded focus:outline-none focus:ring-blue-500/50 border w-full max-w-4xl"
-  />
-</Form>
-
-<div className="w-full flex justify-end">
+          <div className="w-full flex justify-end">
             <ClerkLoaded>
               <SignedIn>
                 <Link
@@ -175,13 +180,9 @@ const Navbar = () => {
               </div>
               </SignedIn>
               {user ? (
-                <div className="flex items-center gap-x-2">
-                <UserButton />
-                <div className="hidden sm:block text-xs">
-                  <p className="text-gray-400">Welcome Back</p>
-                  <p>{user.fullName}</p>
+                <div className="flex items-center">
+                  <UserButton />
                 </div>
-              </div>
               ) : (
                 <div className="w-full justify-around hover:bg-prim_blue">
                 <SignInButton mode="modal" />
@@ -201,28 +202,13 @@ const Navbar = () => {
               
             </ClerkLoaded>
           </div>
-        {/* <div className="flex gap-4">
-          <Link href="/basket" className="relative">
-            <IoCartOutline className="text-2xl" />
-            {itemCount > 0 && (
-              <span className="absolute top-0 right-0 bg-blue-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-                {itemCount}
-              </span>
-            )}
-          </Link>
-          {user ? (
-            <UserButton />
-          ) : (
-            <SignInButton mode="modal" />
-          )}
-        </div> */}
-      </div>
+        </div>
+        </div>
     </div>
   );
 };
 
 export default Navbar;
-
 
 // "use client";
 
@@ -384,72 +370,72 @@ export default Navbar;
 //          )} 
 //         </div>
 //         {/* left */}
-//         <div className="md:block lg:flex  hidden md:w-full md:justify-center md:items-center gap-4 text-prim_blue">
-//           <div className="w-full">
-//             {/* Search Bar */}
-//             <Form
-//               action="/search"
-//               className="w-full sm:w-auto sm:flex-1 sm:mx-4 mt-2 sm:mt-0"
-//             >
-//               <input
-//                 type="text"
-//                 name="query"
-//                 aria-label="Search products"
-//                 placeholder="Search for products"
-//                 className="bg-gray-100 text-gray-800 px-4 py-2 rounded focus:outline-none focus:ring-blue-500/50 border w-full max-w-4xl"
-//               />
-//             </Form>
-//           </div>
+        // <div className="md:block lg:flex  hidden md:w-full md:justify-center md:items-center gap-4 text-prim_blue">
+        //   <div className="w-full">
+        //     {/* Search Bar */}
+        //     <Form
+        //       action="/search"
+        //       className="w-full sm:w-auto sm:flex-1 sm:mx-4 mt-2 sm:mt-0"
+        //     >
+        //       <input
+        //         type="text"
+        //         name="query"
+        //         aria-label="Search products"
+        //         placeholder="Search for products"
+        //         className="bg-gray-100 text-gray-800 px-4 py-2 rounded focus:outline-none focus:ring-blue-500/50 border w-full max-w-4xl"
+        //       />
+        //     </Form>
+        //   </div>
 
-          // <div className="w-full flex justify-end">
-          //   <ClerkLoaded>
-          //     <SignedIn>
-          //       <Link
-          //         href="/orders"
-          //         aria-label="View my orders"
-          //         className="flex items-center space-x-2 text-blue-400 font-bold py-2 px-4 rounded"
-          //       >
-          //         <PackageIcon className="w-7 h-7" />
-          //       </Link>
-          //       <div>
-          //     <div className="flex items-center gap-x-4">
-          //   <Link
-          //     href="/basket"
-          //     aria-label={`View basket with ${itemCount} items`}
-          //     className="text-lg flex items-center py-2 px-4"
-          //   >
-          //     <IoCartOutline className="w-7 h-7" />
-          //     <span className=" bg-prim_blue -mt-px text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-          //       {itemCount}
-          //     </span>
-          //   </Link>
-          //    </div> 
-          //     </div>
-          //     </SignedIn>
-          //     {user ? (
-          //       <div className="flex items-center">
-          //         <UserButton />
-          //       </div>
-          //     ) : (
-          //       <div className="w-full justify-around hover:bg-prim_blue">
-          //       <SignInButton mode="modal" />
-          //      </div>
-          //     )}
-          //     {user?.passkeys.length === 0 && (
+        //   <div className="w-full flex justify-end">
+        //     <ClerkLoaded>
+        //       <SignedIn>
+        //         <Link
+        //           href="/orders"
+        //           aria-label="View my orders"
+        //           className="flex items-center space-x-2 text-blue-400 font-bold py-2 px-4 rounded"
+        //         >
+        //           <PackageIcon className="w-7 h-7" />
+        //         </Link>
+        //         <div>
+        //       <div className="flex items-center gap-x-4">
+        //     <Link
+        //       href="/basket"
+        //       aria-label={`View basket with ${itemCount} items`}
+        //       className="text-lg flex items-center py-2 px-4"
+        //     >
+        //       <IoCartOutline className="w-7 h-7" />
+        //       <span className=" bg-prim_blue -mt-px text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+        //         {itemCount}
+        //       </span>
+        //     </Link>
+        //      </div> 
+        //       </div>
+        //       </SignedIn>
+        //       {user ? (
+        //         <div className="flex items-center">
+        //           <UserButton />
+        //         </div>
+        //       ) : (
+        //         <div className="w-full justify-around hover:bg-prim_blue">
+        //         <SignInButton mode="modal" />
+        //        </div>
+        //       )}
+        //       {user?.passkeys.length === 0 && (
                
-          //        <button
-          //         onClick={createClerkPasskey}
-          //         aria-label="Create a passkey"
-          //         className="bg-white hover:bg-blue-400 hover:text-white font-bold py-2 px-3 rounded border"
-          //       >
-          //        <GoPasskeyFill />
-          //       </button>
+        //          <button
+        //           onClick={createClerkPasskey}
+        //           aria-label="Create a passkey"
+        //           className="bg-white hover:bg-blue-400 hover:text-white font-bold py-2 px-3 rounded border"
+        //         >
+        //          <GoPasskeyFill />
+        //         </button>
               
-          //     )}
+        //       )}
               
-          //   </ClerkLoaded>
-          // </div>
-//         </div>
+        //     </ClerkLoaded>
+        //   </div>
+        // </div>
 //       </div>
 //     </div>
 //   );
