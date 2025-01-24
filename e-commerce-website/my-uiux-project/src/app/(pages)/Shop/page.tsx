@@ -7,41 +7,10 @@ import { CgMenuGridR } from "react-icons/cg";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { GoChevronDown } from "react-icons/go";
 import Shop_Product from '../../components/Shop_Product';
-import { client } from '@/sanity/lib/client';
-  
-
 
 
 const ShopProduct = async () => {
 
-  //  const products = await client.fetch(`
-  //   *[_type == "product" && $tag in tags] {
-  //   _id,
-  //   name,
-  //   description,
-  //   price,
-  //   discountPercentage,
-  //   priceWithoutDiscount,
-  //   rating,
-  //   ratingCount,
-  //   tags,
-  //   sizes,
-  //   "imageUrl": image.asset->url,
-  //   isAvailable,
-  //   url
-  // }
-  //   `)
-
-   
-    
-  // Shop card items data
-  const ShopItem = [
-    { id: '1', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC1.png' },
-    { id: '2', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC2.png' },
-    { id: '3', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC3.png' },
-    { id: '4', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC4.png' },
-    { id: '5', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC5.png' },
-  ];
 
   const brandLogos = [
     {

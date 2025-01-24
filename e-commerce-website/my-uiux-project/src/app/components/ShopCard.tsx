@@ -3,7 +3,7 @@ import React from 'react';
 
 interface ShopCardProps {
     title: string;
-    description: string;
+    description?: string;
     imgUrl: string
 }
 
