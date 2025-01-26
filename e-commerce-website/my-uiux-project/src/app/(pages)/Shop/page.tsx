@@ -62,6 +62,14 @@ const ShopProduct = async () => {
       link: '/',
     },
   ];
+   // Shop card items data
+   const ShopItem = [
+    { id: '1', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC1.png' },
+    { id: '2', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC2.png' },
+    { id: '3', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC3.png' },
+    { id: '4', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC4.png' },
+    { id: '5', title: 'CLOTHS', description: '5 Items', imgUrl: '/shop/shopC5.png' },
+  ];
 
   
   return (

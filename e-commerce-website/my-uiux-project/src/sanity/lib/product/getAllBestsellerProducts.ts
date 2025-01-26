@@ -1,0 +1,19 @@
+import { defineQuery } from "next-sanity";
+import { sanityFetch } from "../live";
+
+export const  bestSellerProducts= async () => {
+  const ALL_Bestseller_PRODUCTS_QUERY = defineQuery(`*[_type == "product" && "bestseller" in tags] | order(name asc)`);
+
+  try {
+    // Use sanityFetch to send the query
+    const products = await sanityFetch({
+      query: ALL_Bestseller_PRODUCTS_QUERY,
+    });
+
+    // Return the list of bsetseller products, or an empty array if none are found
+    return products.data || []; // Adjust based on the actual structure of the sanityFetch response
+  } catch (error) {
+    console.error("Error fetching all products:", error);
+    return [];
+  }
+};
