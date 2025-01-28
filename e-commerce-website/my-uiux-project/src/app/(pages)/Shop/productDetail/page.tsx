@@ -22,7 +22,7 @@
 // import "swiper/css/thumbs";
 // import { Product } from "../../../../../sanity.types";
 
-// const ProductDetails = ({ products }: { products?: any[] }) => {
+// const ProductDetail = ({ products }: { products?: Product }) => {
 //   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
 
 //   // Example product data (replace with actual props or API data)
@@ -41,6 +41,8 @@
 //       "/productDetail/sofa-product-1.jpg",
 //     ],
 //   };
+//   console.log(exampleProduct);
+  
 
 //   const currentProduct = products || exampleProduct; // Use provided product or fallback
 
@@ -84,7 +86,7 @@
 //   thumbs={{ swiper: thumbsSwiper }}
 //   className="w-full"
 // >
-//   {currentProduct.images.map((img: string, index: number) => (
+//   {currentProduct. images.map((img: string, index: number) => (
 //     <SwiperSlide key={index}>
 //       <Image
 //         src={img}
@@ -174,7 +176,7 @@
 //           </div>
 //         </div>
 //       </div>
-
+     
 //       {/* product description section */}
 //       <div className="w-full bg-white overflow-hidden max-w-screen-2xl font-semibold px-20 pb-10 mx-auto mt-0">
 
@@ -306,4 +308,4 @@
 //     </>
 //   )
 // };
-// export default ProductDetails;
+// export default ProductDetail;

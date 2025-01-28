@@ -50,6 +50,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/react-is": "^19.0.0",
+    "@types/stripe": "^8.0.416",
     "@types/use-sync-external-store": "^0.0.6",
     "eslint": "^8",
     "eslint-config-next": "15.0.4",

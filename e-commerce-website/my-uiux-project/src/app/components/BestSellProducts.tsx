@@ -126,3 +126,38 @@ export default BestSeller_Pd;
 
 // export default BestSeller_Pd;
 
+{/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+{product.image && (
+  <Link
+    href={`/product/${product.slug?.current}`}
+    className={`group flex flex-col bg-white rounded-lg border shadow-sm overflow-hidden ${
+      isOutOfStock ? "opacity-50 cursor-not-allowed" : "hover:shadow-md"
+    }`}
+    aria-disabled={isOutOfStock}
+  >
+    <div className="relative aspect-square w-full overflow-hidden">
+      <Image
+        src={imageUrl(product.image).url()}
+        alt={product.name || "Product image"}
+        fill
+        className="object-cover group-hover:scale-105 transition-transform"
+      />
+      {isOutOfStock && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+          <span className="text-white font-bold text-lg">Out of Stock</span>
+        </div>
+      )}
+    </div>
+    <h5 className="text-[16px] font-bold text-text2 mt-2 truncate">
+      {product.name}
+    </h5>
+    <p className="text-[14px] font-normal text-text truncate">
+      {truncatedDescription}
+    </p>
+    <h5 className="text-[16px] font-bold text-text2 mt-2">
+      <span>${product.price?.toFixed(2) || "0.00"}</span>
+      <span className="block">Stock: {product.stock ?? "N/A"}</span>
+    </h5>
+  </Link>
+)}
+</div> */}

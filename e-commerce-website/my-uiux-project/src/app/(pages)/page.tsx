@@ -7,8 +7,8 @@
 
 // export default async function Home() {
 
-//   const products = await getAllProducts()
-//   const categories = await getAllCategories()
+  // const products = await getAllProducts()
+  // const categories = await getAllCategories()
 //   return (
 //    <div>
 //    <NewCollection />
@@ -26,17 +26,23 @@ import BestSeller_Pd from "../components/BestSellProducts";
 import { ClassicProduct } from "../components/ClassicProduct";
 import Universe from "../components/Univers";
 import FeaturedPosts from "../components/Post";
+import ProductsView from "@/components/ProductsView";
+import { getAllCategories } from "@/sanity/lib/product/getAllCategories";
+import { getAllProducts } from "@/sanity/lib/product/getAllProducts";
 // import BestSeller_Pd from "@/components/BestSellProducts";
 
 
 export default async function Home() {
 
-  
+  const products = await getAllProducts()
+  const categories = await getAllCategories()
+
   return (
    <main>
     <Shop_Hero />
     <EditorsSection />
-    <BestSeller_Pd />
+    {/* <BestSeller_Pd /> */}
+    <ProductsView products={products} categories={categories} />
     <ClassicProduct />
     <Universe />
     <FeaturedPosts />

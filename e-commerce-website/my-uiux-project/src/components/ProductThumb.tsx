@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useMemo } from "react";
 import { Product } from "../../sanity.types";
+import { Anybody } from "next/font/google";
 
 // Define the type for the block and child objects
 interface BlockChild {
@@ -47,7 +48,7 @@ const ProductThumb = ({ product }: { product: Product }) => {
             src={imageUrl(product.image).url()}
             alt={product.name || "Product image"}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-contain transition-transform duration-300 group-hover:scale-105"
           />
         )}
 

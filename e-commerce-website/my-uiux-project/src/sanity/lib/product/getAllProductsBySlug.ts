@@ -1,3 +1,4 @@
+import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
 
 export const getAllProductsBySlug = async (slug: string) => {
@@ -14,6 +15,22 @@ export const getAllProductsBySlug = async (slug: string) => {
   }
 };
 
+export const getCommentsForProduct = async (productId: string) => {
+  const COMMENT_QUERY = defineQuery(`
+    *[_type == "comment" && product._ref == $productId] | order(createdAt desc)
+  `);
+
+  try {
+    const result = await sanityFetch({
+      query: COMMENT_QUERY,
+      params: { productId },
+    });
+    return result.data || [];
+  } catch (error) {
+    console.error("Error fetching comments:", error);
+    return [];
+  }
+};
 
 // import { defineQuery } from "next-sanity"
 // import { sanityFetch } from "../live";

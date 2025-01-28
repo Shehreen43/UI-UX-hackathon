@@ -21,6 +21,7 @@ import {
 import useBasketStore from "../../../store/store";
 import { GoPasskeyFill } from "react-icons/go";
 import { PackageIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const montserrat = Montserrat({
   weight: ["400", "700"],
@@ -50,8 +51,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links, onClose }) => (
   </div>
 );
 
-const Navbar = () => {
 
+
+const Navbar = () => {
+  const router = useRouter(); // Initialize useRouter hook
   const { user } = useUser();
   const [menuOpen, setMenuOpen] = useState(false);
   const itemCount = useBasketStore((state) =>
@@ -82,7 +85,16 @@ const Navbar = () => {
     { name: "Contact", href: "/Contact" },
     { name: "Pricing", href: "/Pricing" },
   ];
-
+  if (typeof window !== "undefined") {
+    // Now it's safe to use `useRouter`
+    const router = useRouter();
+  }
+  
+  
+  // Programmatically navigate to a specific page (e.g., on button click or event)
+  const handleGoToCart = () => {
+    router.push("/basket");  // Navigate to the basket page
+  };
   return (
     <div className="w-full bg-white sticky top-0 z-50 shadow-md">
       {/* Topline */}
@@ -165,7 +177,19 @@ const Navbar = () => {
                   <PackageIcon className="w-7 h-7" />
                 </Link>
                 <div>
-              <div className="flex items-center gap-x-4">
+                <div className="flex items-center gap-x-4">
+                    <button
+                      onClick={handleGoToCart} // Use the router to navigate
+                      aria-label={`View basket with ${itemCount} items`}
+                      className="text-lg flex items-center py-2 px-4"
+                    >
+                      <IoCartOutline className="w-7 h-7" />
+                      <span className="bg-prim_blue -mt-px text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                        {itemCount}
+                      </span>
+                    </button>
+                  </div>
+              {/* <div className="flex items-center gap-x-4">
             <Link
               href="/basket"
               aria-label={`View basket with ${itemCount} items`}
@@ -176,7 +200,7 @@ const Navbar = () => {
                 {itemCount}
               </span>
             </Link>
-             </div> 
+             </div>  */}
               </div>
               </SignedIn>
               {user ? (
