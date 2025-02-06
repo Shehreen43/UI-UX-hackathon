@@ -7,10 +7,14 @@ import { CgMenuGridR } from "react-icons/cg";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { GoChevronDown } from "react-icons/go";
 import Shop_Product from '../../components/Shop_Product';
+import { getAllProducts } from '@/sanity/lib/product/getAllProducts';
+import { getAllCategories } from '@/sanity/lib/product/getAllCategories';
+import ProductsView from '@/components/ProductsView';
 
 
 const ShopProduct = async () => {
-
+ const products = await getAllProducts()
+  const categories = await getAllCategories()
 
   const brandLogos = [
     {
@@ -88,7 +92,7 @@ const ShopProduct = async () => {
               <GoChevronRight className="pt-[5px] size-5 text-muted_text_col" />
             </li>
             <li>
-               <Link href="/Shop/ShopDetail" className="text-muted_text_col font-bold sm:items-end">Shop</Link>
+               <Link href="/basket" className="text-muted_text_col font-bold sm:items-end">Cart</Link>
             </li>
           </ul>
         </div>
@@ -147,7 +151,8 @@ const ShopProduct = async () => {
 
     {/* Shop Product cards */}
  <div>
-  <Shop_Product />
+
+  <ProductsView products={products} categories={categories} />
  </div>
    
     {/* Navigations */}

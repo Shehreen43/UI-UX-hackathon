@@ -1,9 +1,11 @@
+"use client";
+
 import { imageUrl } from "@/lib/imageUrl";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useMemo } from "react";
 import { Product } from "../../sanity.types";
-import { Anybody } from "next/font/google";
+import AddToWishlist from "./AddToWishlist";
 
 // Define the type for the block and child objects
 interface BlockChild {
@@ -18,7 +20,7 @@ interface Block {
   children: BlockChild[];
 }
 
-const ProductThumb = ({ product }: { product: Product }) => {
+const ProductThumb = ({ product }: { product: Product }) => {  
   const isOutOfStock = useMemo(() => product.stock != null && product.stock <= 0, [product.stock]);
 
   // Truncate the description if it's too long
@@ -57,6 +59,11 @@ const ProductThumb = ({ product }: { product: Product }) => {
             <span className="text-white font-bold text-lg">Out of Stock</span>
           </div>
         )}
+
+       <div className="absolute top-2 right-2">
+          <AddToWishlist product={product} />
+        </div>
+
       </div>
 
       {/* Product Details */}
@@ -76,6 +83,9 @@ const ProductThumb = ({ product }: { product: Product }) => {
           <p className="text-lg font-medium text-gray-600">
             Stock: {product.stock ?? "N/A"}
           </p>
+          <button className="mt-3 bg-prim_blue hover:bg-prim_blue/80 text-white px-4 py-2 rounded">
+        Buy Now
+      </button>
         </div>
       </div>
     </Link>
