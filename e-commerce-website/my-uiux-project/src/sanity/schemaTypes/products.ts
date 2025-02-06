@@ -70,16 +70,24 @@ export const productType = defineType({
       validation: (Rule) => Rule.min(0).warning('Rating count must be a positive number'),
     }),
     defineField({
-      name: "tags",
-      title: "Tags",
+      name: "categories",
+      title: "Categories",
       type: "array",
-      of: [{ type: "string" }],
-      options: {
-        layout: "tags",
-      },
-      description: 'Add tags like "new arrival", "bestseller", etc.',
+      of: [{ type: "reference", to: { type: "category" } }],
+      description: 'Add category like "new arrival", "bestseller", etc.',
       validation: (Rule) => Rule.unique().warning('Each tag must be unique'),
     }),
+    // defineField({
+    //   name: "tags",
+    //   title: "Tags",
+    //   type: "array",
+    //   of: [{ type: "string" }],
+    //   options: {
+    //     layout: "tags",
+    //   },
+    //   description: 'Add tags like "new arrival", "bestseller", etc.',
+    //   validation: (Rule) => Rule.unique().warning('Each tag must be unique'),
+    // }),
     defineField({
       name: "sizes",
       title: "Sizes",

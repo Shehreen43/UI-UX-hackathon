@@ -155,7 +155,13 @@ export type Product = {
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
   sizes?: Array<string>;
   stock?: number;
   isAvailable?: boolean;
@@ -310,44 +316,7 @@ export type MY_ORDERS_QUERYResult = Array<{
 // Source: ./src/sanity/lib/product/getAllBestsellerProducts.ts
 // Variable: ALL_Bestseller_PRODUCTS_QUERY
 // Query: *[_type == "product" && "bestseller" in tags] | order(name asc)
-export type ALL_Bestseller_PRODUCTS_QUERYResult = Array<{
-  _id: string;
-  _type: "product";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  description?: string;
-  price?: number;
-  discountPercentage?: number;
-  priceWithoutDiscount?: number;
-  rating?: number;
-  ratingCount?: number;
-  tags?: Array<string>;
-  sizes?: Array<string>;
-  stock?: number;
-  isAvailable?: boolean;
-  url?: string;
-  variants?: Array<{
-    color?: string;
-    style?: string;
-    price?: number;
-    stock?: number;
-    _key: string;
-  }>;
-}>;
+export type ALL_Bestseller_PRODUCTS_QUERYResult = Array<never>;
 
 // Source: ./src/sanity/lib/product/getAllCategories.ts
 // Variable: ALL_CATEGORIES_QUERY
@@ -398,7 +367,13 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
   sizes?: Array<string>;
   stock?: number;
   isAvailable?: boolean;
@@ -411,6 +386,11 @@ export type ALL_PRODUCTS_QUERYResult = Array<{
     _key: string;
   }>;
 }>;
+
+// Source: ./src/sanity/lib/product/getAllProductsBySlug.ts
+// Variable: COMMENT_QUERY
+// Query: *[_type == "comment" && product._ref == $productId] | order(createdAt desc)
+export type COMMENT_QUERYResult = Array<never>;
 
 // Source: ./src/sanity/lib/product/getProductByCategory.tsx
 // Variable: PRODUCT_BY_CATEGORY_QUERY
@@ -440,7 +420,13 @@ export type PRODUCT_BY_CATEGORY_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
   sizes?: Array<string>;
   stock?: number;
   isAvailable?: boolean;
@@ -482,7 +468,13 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
   priceWithoutDiscount?: number;
   rating?: number;
   ratingCount?: number;
-  tags?: Array<string>;
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
   sizes?: Array<string>;
   stock?: number;
   isAvailable?: boolean;
@@ -522,6 +514,7 @@ declare module "@sanity/client" {
     "*[_type == \"product\" && \"bestseller\" in tags] | order(name asc)": ALL_Bestseller_PRODUCTS_QUERYResult;
     "*[_type == \"category\"] | order(title asc)": ALL_CATEGORIES_QUERYResult;
     "*[_type == \"product\"] | order(name asc)": ALL_PRODUCTS_QUERYResult;
+    "\n    *[_type == \"comment\" && product._ref == $productId] | order(createdAt desc)\n  ": COMMENT_QUERYResult;
     "\n        *[_type == \"product\" && category->slug.current == $categorySlug] | order(name asc)\n    ": PRODUCT_BY_CATEGORY_QUERYResult;
     "\n    *[_type == \"product\" && name match $searchParam] | order(name asc)\n  ": PRODUCT_SEARCH_QUERYResult;
     "*[_type == \"sale\" && isActive == true && couponCode == $couponCode] | order(validForm desc)[0]": ACTIVE_SALE_BY_COUPON_QUERYResult;

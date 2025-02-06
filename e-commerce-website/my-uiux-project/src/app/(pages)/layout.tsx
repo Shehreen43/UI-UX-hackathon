@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Montserrat } from "next/font/google";
 import { SanityLive } from "@/sanity/lib/live";
+import ToastProvider from "@/components/ToastProvider";
 
 // Google Font Configuration
 const montserrat = Montserrat({
@@ -44,6 +45,7 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <main>
+          <ToastProvider />
             <Header />
             {children}
             <Footer />

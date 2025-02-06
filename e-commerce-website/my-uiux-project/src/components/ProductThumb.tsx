@@ -21,7 +21,11 @@ interface Block {
 }
 
 const ProductThumb = ({ product }: { product: Product }) => {  
-  const isOutOfStock = useMemo(() => product.stock != null && product.stock <= 0, [product.stock]);
+  const isOutOfStock = useMemo(() => {
+    const stock = Number(product.stock ?? 0); // Convert to number, default to 0 if null or undefined
+    return stock <= 0;
+  }, [product.stock]);
+  
 
   // Truncate the description if it's too long
   const truncatedDescription = useMemo(() => {
@@ -39,6 +43,7 @@ const ProductThumb = ({ product }: { product: Product }) => {
   }, [product.description]);
 
   return (
+    <div className="w-full">
     <Link
       href={`/product/${product.slug?.current}`}
       className={`group flex flex-col bg-white rounded-lg border border-gray-100 overflow-hidden shadow-sm hoverEffect ${isOutOfStock ? "opacity-50 cursor-not-allowed" : ""}`}
@@ -76,19 +81,22 @@ const ProductThumb = ({ product }: { product: Product }) => {
           {truncatedDescription}
         </p>
 
-        <div className="mt-2 flex justify-between items-center">
+        <div className="mt-2 flex flex-col justify-between items-center">
+          <div className="flex justify-between gap-6">
           <p className="text-lg font-bold text-gray-900">
             ${product.price?.toFixed(2) || "0.00"}
           </p>
           <p className="text-lg font-medium text-gray-600">
             Stock: {product.stock ?? "N/A"}
           </p>
-          <button className="mt-3 bg-prim_blue hover:bg-prim_blue/80 text-white px-4 py-2 rounded">
+          </div>
+          <button className="mt-3 w-full bg-prim_blue hover:bg-prim_blue/80 text-white px-4 py-2 rounded">
         Buy Now
       </button>
         </div>
       </div>
     </Link>
+    </div>
   );
 };
 

@@ -12,17 +12,18 @@ interface ProductsViewProps {
 const ProductsView = ({products, categories}:ProductsViewProps) =>{
     return (
         <div className="flex flex-col">
-            {/* categories
+            {/* categories */}
+            {/* <div className="w-full sm:w-[200px]"> */}
             <div className="w-full sm:w-[200px]">
                 <CategorySelectorComponent categories={categories} />
-            </div> */}
+            </div>
 
             {/* products */}
-            <div className="flex-1">
+            <div className="flex-1 w-full">
                 <div>
                     <ProductGrid products={products} />
 
-                    <hr  className="w-1/2 sm:w-3/4"/>
+                    <hr  className="w-1/2 sm:w-3/4 items-center justify-center mt-10 flex"/>
                 </div>
             </div>
         </div>
