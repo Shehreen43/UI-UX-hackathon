@@ -6,7 +6,6 @@ import Shop_Card from '../../components/ShopCard';
 import { CgMenuGridR } from "react-icons/cg";
 import { TfiMenuAlt } from "react-icons/tfi";
 import { GoChevronDown } from "react-icons/go";
-import Shop_Product from '../../components/Shop_Product';
 import { getAllProducts } from '@/sanity/lib/product/getAllProducts';
 import { getAllCategories } from '@/sanity/lib/product/getAllCategories';
 import ProductsView from '@/components/ProductsView';

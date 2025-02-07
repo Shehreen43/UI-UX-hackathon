@@ -1,9 +1,10 @@
-
-
 import CommentSection from "@/app/components/CommentSection";
 import AddToBasketButton from "@/components/AddToBasketButton";
 import { imageUrl } from "@/lib/imageUrl";
-import { getAllProductsBySlug, getCommentsForProduct } from "@/sanity/lib/product/getAllProductsBySlug";
+import {
+  getAllProductsBySlug,
+  getCommentsForProduct,
+} from "@/sanity/lib/product/getAllProductsBySlug";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,8 +46,8 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
           </li>
         </ul>
       </div>
-          
-          {/* product details */}
+
+      {/* product details */}
       <div className="container mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div
@@ -69,7 +70,7 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
             )}
           </div>
 
-            {/* Product Info */}
+          {/* Product Info */}
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="text-2xl font-bold text-gray-800">
@@ -132,20 +133,17 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
                     disabled={isOutOfStock}
                   />
                 </div>
-
-              
               </div>
             </div>
           </div>
         </div>
         {/* Comments Section */}
-      <div className="mt-10">
-        <CommentSection productId={product._id} comments={comments} />
-      </div>
+        <div className="mt-10">
+          <CommentSection productId={product._id} comments={comments} />
+        </div>
       </div>
 
       {/*  */}
-
     </div>
   );
 }

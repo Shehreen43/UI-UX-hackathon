@@ -59,16 +59,6 @@ import { useState } from 'react';
 import { Thumbs, Navigation } from 'swiper/modules';
 import { getAllProductsBySlug } from '@/sanity/lib/product/getAllProductsBySlug';
 
-type ProductDetailsProps = {
-  product: {
-    name: string;
-    price: number;
-    stock: number;
-    images: string[];
-    description: any;
-  };
-};
-
 export default async function ProductDetails({params,}: {params:Promise<{slug: string;}>}) {
 
     const { slug } = await params;
