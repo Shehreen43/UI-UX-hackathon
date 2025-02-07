@@ -29,7 +29,6 @@ import FeaturedPosts from "../components/Post";
 import ProductsView from "@/components/ProductsView";
 import { getAllCategories } from "@/sanity/lib/product/getAllCategories";
 import { getAllProducts } from "@/sanity/lib/product/getAllProducts";
-// import BestSeller_Pd from "@/components/BestSellProducts";
 
 
 export default async function Home() {
@@ -41,7 +40,6 @@ export default async function Home() {
    <main>
     <Shop_Hero />
     <EditorsSection />
-    {/* <BestSeller_Pd /> */}
     <ProductsView products={products} categories={categories} />
     <ClassicProduct />
     <Universe />

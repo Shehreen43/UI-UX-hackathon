@@ -54,7 +54,7 @@ export function CategorySelectorComponent({
           aria-expanded={open}
           aria-haspopup="listbox"
           aria-activedescendant={selectedCategoryId}
-          className="w-full max-w-full relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="w-full max-w-full relative flex justify-center sm:justify-start sm:flex-none items-center space-x-2 bg-prim_blue hover:bg-prim_blue/65 text-white font-bold py-2 px-4 rounded"
         >
           {selectedCategoryId
             ? categories.find((category) => category._id === selectedCategoryId)

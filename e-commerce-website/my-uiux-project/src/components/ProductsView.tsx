@@ -11,9 +11,8 @@ interface ProductsViewProps {
 
 const ProductsView = ({products, categories}:ProductsViewProps) =>{
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col max-w-7xl mx-auto">
             {/* categories */}
-            {/* <div className="w-full sm:w-[200px]"> */}
             <div className="w-full sm:w-[200px]">
                 <CategorySelectorComponent categories={categories} />
             </div>

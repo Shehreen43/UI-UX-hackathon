@@ -100,7 +100,7 @@ async function Orders() {
                   <div className="space-y-3 sm:space-y-4">
                     {order.products?.map((product) => (
                       <div
-                        key={product.product?._id}
+                        key={product.product?.name}
                         className="flex flex-row sm:items-center sm:justify-between gap-3 py-2 border-b last:border-b-0"
                       >
                         <div className="flex items-center gap-3 sm:gap-4">
