@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import toast from 'react-hot-toast';
 import { imageUrl } from '@/lib/imageUrl'; // Ensure this utility correctly generates image URLs from Sanity
+import { Product } from '../../sanity.types';
 
 // Define the Wishlist Product type
 type WishlistProduct = {
@@ -13,7 +14,7 @@ type WishlistProduct = {
 
 type WishlistState = {
   wishlist: WishlistProduct[];
-  addToWishlist: (product: any) => void;
+  addToWishlist: (product: Product) => void;
   removeFromWishlist: (id: string) => void;
   clearWishlist: () => void;
   syncWishlist: () => void;
@@ -37,7 +38,7 @@ export const useWishlistStore = create<WishlistState>()(
         // Map Sanity Product to Wishlist Product format
         const wishlistProduct: WishlistProduct = {
           id: product._id,
-          title: product.name,
+          title: product.name || "product",
           image: product.image ? imageUrl(product.image).url() : '/fallback-image.jpg',
           price: product.price || 0,
         };

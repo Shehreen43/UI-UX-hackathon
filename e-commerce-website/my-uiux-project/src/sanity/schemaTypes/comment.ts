@@ -1,7 +1,6 @@
-// /sanity/schemas/comment.js
-import { Rule } from '@sanity/types';  // Import the Rule type
+import { Rule } from '@sanity/types';
 
-export default {
+const commentSchema = {
   name: 'comment',
   title: 'Comment',
   type: 'document',
@@ -20,13 +19,13 @@ export default {
       name: 'rating',
       title: 'Rating',
       type: 'number',
-      validation: (Rule: Rule) => Rule.min(1).max(5),  // Add type annotation for Rule
+      validation: (Rule: Rule) => Rule.min(1).max(5),
     },
     {
       name: 'product',
       title: 'Product',
       type: 'reference',
-      to: [{ type: 'product' }],  // Reference to the Product document
+      to: [{ type: 'product' }],
     },
     {
       name: 'createdAt',
@@ -40,3 +39,5 @@ export default {
     },
   ],
 };
+
+export default commentSchema;

@@ -1,27 +1,30 @@
 "use client";
 import { useState } from "react";
 
-const CommentSection = ({ productId, comments }: { productId: string, comments: any[] }) => {
-  const [newComment, setNewComment] = useState("");
-  const [showCommentForm, setShowCommentForm] = useState(false); // State to toggle the comment form visibility
+// Define the Comment type
+interface Comment {
+  _id: string;
+  text: string;
+  user: string;
+  createdAt: string;
+}
 
-  // Handle form submission for new comment
+const CommentSection = ({ productId, comments }: { productId: string, comments: Comment[] }) => {
+  const [newComment, setNewComment] = useState("");
+  const [showCommentForm, setShowCommentForm] = useState(false);
+
   const handleAddComment = async () => {
     if (!newComment) return;
 
     try {
-      // Send the new comment to the backend (API route)
       await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId, comment: newComment }),
       });
 
-      // Reset the comment input and hide the form
       setNewComment("");
-      setShowCommentForm(false); // Hide form after submission
-
-      // Ideally, you would refresh the comments here
+      setShowCommentForm(false);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
@@ -31,12 +34,11 @@ const CommentSection = ({ productId, comments }: { productId: string, comments: 
     <div className="w-full max-w-4xl mx-auto px-4 py-6 bg-white shadow-lg rounded-lg mt-8">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">Comments</h2>
 
-      {/* Display existing comments */}
       {comments.length === 0 ? (
         <p className="text-gray-600">No comments yet. Be the first to comment!</p>
       ) : (
         <div className="space-y-4">
-          {comments.map((comment: any) => (
+          {comments.map((comment) => (
             <div key={comment._id} className="border-b pb-4">
               <p className="text-lg font-medium text-gray-800">{comment.text}</p>
               <span className="text-sm text-gray-500">By: {comment.user}</span>
@@ -47,7 +49,6 @@ const CommentSection = ({ productId, comments }: { productId: string, comments: 
         </div>
       )}
 
-      {/* Button to show the comment form */}
       {!showCommentForm && (
         <button
           onClick={() => setShowCommentForm(true)}
@@ -57,7 +58,6 @@ const CommentSection = ({ productId, comments }: { productId: string, comments: 
         </button>
       )}
 
-      {/* Comment input form (only visible when showCommentForm is true) */}
       {showCommentForm && (
         <div className="mt-6 space-y-4">
           <textarea

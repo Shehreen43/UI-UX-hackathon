@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Montserrat } from "next/font/google";
 import { HiOutlineX, HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoCartOutline } from "react-icons/io5";
 import { MdFacebook } from "react-icons/md";
@@ -24,12 +23,6 @@ import { GoPasskeyFill } from "react-icons/go";
 import { PackageIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useWishlistStore } from "@/store/wishlistStore";
-
-const montserrat = Montserrat({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 interface MobileMenuProps {
   links: { name: string; href: string }[];
@@ -53,10 +46,8 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ links, onClose }) => (
   </div>
 );
 
-
-
 const Navbar = () => {
-  const router = useRouter(); // Initialize useRouter hook
+  const router = useRouter();
   const { user } = useUser();
   const [menuOpen, setMenuOpen] = useState(false);
   const itemCount = useBasketStore((state) =>
@@ -82,18 +73,14 @@ const Navbar = () => {
       }
     }
   };
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/Shop" },
     { name: "About", href: "/AboutUs" },
     { name: "Contact", href: "/Contact" },
   ];
-  if (typeof window !== "undefined") {
-    // Now it's safe to use `useRouter`
-    const router = useRouter();
-  }
-  
-  
+
   // Programmatically navigate to a specific page (e.g., on button click or event)
   const handleGoToCart = () => {
     router.push("/basket");  // Navigate to the basket page
@@ -102,6 +89,7 @@ const Navbar = () => {
   const handleGoToWishlist = () => {
     router.push("/wishlist");  // Navigate to the wishlist page
   };
+
   return (
     <div className="w-full bg-white sticky top-0 z-50 shadow-md">
       {/* Topline */}
@@ -125,11 +113,11 @@ const Navbar = () => {
 
       {/* Navbar */}
       <div className="flex justify-between items-center px-4 md:px-8 lg:px-16 py-3">
-       <div className="w-1/4 ">
-       <Link href="/" className="text-2xl font-bold text-gray-800">
-          Bandage
-        </Link>
-       </div>
+        <div className="w-1/4">
+          <Link href="/" className="text-2xl font-bold text-gray-800">
+            Bandage
+          </Link>
+        </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex gap-6">
@@ -154,9 +142,8 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {menuOpen && <MobileMenu links={navLinks} onClose={() => setMenuOpen(false)} />}
-      {/* </div> */}
-     {/*  */}
-     <div className="md:block lg:flex w-1/2  hidden md:w-full md:justify-center md:items-center gap-4 text-prim_blue">
+
+        <div className="md:block lg:flex w-1/2 hidden md:w-full md:justify-center md:items-center gap-4 text-prim_blue">
           <div className="w-full">
             {/* Search Bar */}
             <Form
@@ -184,18 +171,18 @@ const Navbar = () => {
                   <PackageIcon className="w-7 h-7" />
                 </Link>
                 <div>
-                <div className="flex items-center">
-                   {/* Wishlist Button */}
-                   <button
-                    onClick={handleGoToWishlist}
-                    aria-label={`View wishlist with ${wishlistItemCount} items`}
-                    className="text-lg flex items-center py-2 px-4"
-                  >
-              <TiHeartOutline className="w-6 h-6" />
-                    <span className="bg-prim_blue -mt-px text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-                      {wishlistItemCount}
-                    </span>
-                  </button>
+                  <div className="flex items-center">
+                    {/* Wishlist Button */}
+                    <button
+                      onClick={handleGoToWishlist}
+                      aria-label={`View wishlist with ${wishlistItemCount} items`}
+                      className="text-lg flex items-center py-2 px-4"
+                    >
+                      <TiHeartOutline className="w-6 h-6" />
+                      <span className="bg-prim_blue -mt-px text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                        {wishlistItemCount}
+                      </span>
+                    </button>
 
                     <button
                       onClick={handleGoToCart} // Use the router to navigate
@@ -208,7 +195,7 @@ const Navbar = () => {
                       </span>
                     </button>
                   </div>
-              </div>
+                </div>
               </SignedIn>
               {user ? (
                 <div className="flex items-center">
@@ -216,25 +203,22 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div className="w-full justify-around hover:bg-prim_blue">
-                <SignInButton mode="modal" />
-               </div>
+                  <SignInButton mode="modal" />
+                </div>
               )}
               {user?.passkeys.length === 0 && (
-               
-                 <button
+                <button
                   onClick={createClerkPasskey}
                   aria-label="Create a passkey"
                   className="bg-white hover:bg-blue-400 hover:text-white font-bold py-2 px-3 rounded border"
                 >
-                 <GoPasskeyFill />
+                  <GoPasskeyFill />
                 </button>
-              
               )}
-              
             </ClerkLoaded>
           </div>
         </div>
-        </div>
+      </div>
     </div>
   );
 };

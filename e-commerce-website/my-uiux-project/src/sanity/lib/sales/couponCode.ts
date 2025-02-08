@@ -1,4 +1,3 @@
-import NewCollection from "@/components/NewCollection";
 
 export const COUPON_CODES = {
    NewCollection25:"NewCollection25",

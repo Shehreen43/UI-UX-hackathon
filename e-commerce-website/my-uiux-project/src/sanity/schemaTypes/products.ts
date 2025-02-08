@@ -163,7 +163,7 @@ export const productType = defineType({
       media: "image",
       price: "price",
     },
-    prepare(select: { title: string; media: any; price?: number }) {
+    prepare(select: { title: string; media: string; price?: number }) {
       return {
         title: select.title,
         subtitle: select.price ? `$${select.price.toFixed(2)}` : "No price set",

@@ -1,4 +1,5 @@
-import React from 'react';
+
+ import React from 'react';
 import ProductsView from '@/components/ProductsView';
 import { getAllCategories } from '@/sanity/lib/product/getAllCategories';
 import { getProductsCategory } from '@/sanity/lib/product/getProductByCategory';
