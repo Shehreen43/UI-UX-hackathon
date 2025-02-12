@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { client } from "@/sanity/lib/client";
 
@@ -82,7 +82,7 @@ const CheckoutForm = () => {
 
   return (
     <div className="p-6">
-      <ToastContainer />
+    
       
       {/* Checkout Form */}
       <form 
