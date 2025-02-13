@@ -4,7 +4,6 @@ import { imageUrl } from "@/lib/imageUrl";
 import stripe from "@/lib/stripe";
 import { BasketItem } from "../store/store";
 import * as z from "zod";
-import { client } from "@/sanity/lib/client";
 
 export type Metadata = {
   orderNumber: string;
@@ -12,6 +11,7 @@ export type Metadata = {
   customerEmail: string;
   clerkUserId: string;
 };
+
 
 // // Metadata schema for validation
 const MetadataSchema = z.object({
