@@ -293,7 +293,7 @@ const BasketPage = () => {
           </form>
 
           <button  className="mt-4 w-full bg-prim_blue text-white px-4 py-2 rounded hover:bg-prim_blue/70 disabled:bg-gray-400">
-            {isLoading ? "Processing..." : "Checkout"}
+            {isLoading ? "Processing..." : "Submit"}
           </button>
         </div>
         </div>
