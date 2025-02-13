@@ -130,7 +130,7 @@ import { useEffect, useState } from "react";
 import useBasketStore from "../../../../store/store";
 import AddToBasketButton from "@/components/AddToBasketButton";
 import { createCheckoutSession, Metadata } from "../../../../actions/createCheckoutSession";
-import CheckoutForm from "@/components/CheckoutForm";
+// import CheckoutForm from "@/components/CheckoutForm";
 
 const BasketPage = () => {
   const groupItems = useBasketStore((state) => state.getGroupedItems());
@@ -231,7 +231,7 @@ const BasketPage = () => {
         </div>
 
         <div>
-          <CheckoutForm />
+          {/* <CheckoutForm /> */}
         </div>
 
         <div className="w-full lg:w-80 lg:sticky lg:top-4 h-fit bg-white p-6 border rounded order-first lg:order-last fixed bottom-0 left-0 lg:left-auto">
